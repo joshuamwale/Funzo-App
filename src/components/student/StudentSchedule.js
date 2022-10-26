@@ -24,7 +24,7 @@ function StudentSchedule() {
           {/* end of search */}
 
           <div className="session-row">
-            <h3>Student Schedule</h3>
+            <h3>Schedule</h3>
             
           </div>
           {/* add an accordion */}
