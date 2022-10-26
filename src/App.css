@@ -72,7 +72,7 @@
 .nav-link{
   color: white;
   display: block;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   font-size: 16px;
   text-indent: 40px;
   /* text-align: calc(100% - 30px); */
