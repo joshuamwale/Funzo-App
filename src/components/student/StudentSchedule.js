@@ -25,13 +25,7 @@ function StudentSchedule() {
 
           <div className="session-row">
             <h3>Student Schedule</h3>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              id="add-session-btn"
-            >
-              Add Session
-            </button>
+            
           </div>
           {/* add an accordion */}
           <div class="accordion" id="accordionExample">
