@@ -86,3 +86,16 @@
   color: #000000;
   text-decoration: none;
 }
+
+.session-row{
+  border: 2px solid blue;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#add-session-btn{
+  width: 8rem;
+}
+
