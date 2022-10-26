@@ -11,12 +11,15 @@ function StudentSchedule() {
         <div className="col-md-10" id="schedule-div">
           {/* search bar to the left*/}
 
-          <input
-            class="form-control"
-            type="text"
-            placeholder="Search"
-            aria-label="Search"
-          ></input>
+          <form className="search-form">
+            <input
+              class="form-control border border-secondary"
+              id="search-bar"
+              type="text"
+              placeholder="Search Sessions"
+              aria-label="Search"
+            ></input>
+          </form>
 
           {/* end of search */}
 

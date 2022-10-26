@@ -88,14 +88,23 @@
 }
 
 .session-row{
-  border: 2px solid blue;
   padding: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-#add-session-btn{
-  width: 8rem;
+
+
+.search-form{
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+#search-bar{
+  width: 15rem;
+  
 }
 
