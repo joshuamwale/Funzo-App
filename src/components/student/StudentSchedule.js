@@ -7,7 +7,7 @@ function StudentSchedule() {
       <div className='row'>
           <div className='col-md-2 main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
-                Student Schedule
+                <h3>Student Schedule</h3>
           </div>
       </div>
     </div>

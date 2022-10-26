@@ -15,7 +15,7 @@ function SideBar() {
           <Link to="/tm" className='nav-link'> <AiIcons.AiOutlineHome />Home </Link>
           <Link to="/tm-schedule" className='nav-link'><AiIcons.AiOutlineSchedule /> Schedule </Link>
           <Link to="/tm-module" className='nav-link'><MdIcons.MdViewModule /> Module </Link>
-          {/* <Link to="/tm-logout" className='nav-link'><AiIcons.AiOutlineLogout /> Logout </Link> */}
+          <Link to="#" className='nav-link'><AiIcons.AiOutlineLogout /> Logout </Link>
         </div>
     </div>
   )

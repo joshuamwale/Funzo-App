@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -39,14 +39,45 @@
 
 /* customised */
 
+.bar{
+  display: flex;
+  float: right;
+}
+
 .main-sidebar{
   background-color: #8D8787;
   color: #F1EEE9;
   height: 100vh;
 }
 
+.tm-main-sidebar{
+  background-color: #535678;
+  color: #F1EEE9;
+  height: 100vh;
+}
+.profile{
+  text-align: center;
+}
+
 .logo{
-  width: 25%;
-  height: auto;
+  width: auto;
+  height: 60px;
   margin: 12px 0;
+}
+
+.nav{
+  margin-top: 50px;
+}
+
+.nav-link{
+  color: white;
+  display: block;
+  margin-top: 20px;
+  font-size: 16px;
+  text-indent: 40px;
+  /* text-align: calc(100% - 30px); */
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+}
+.nav-link.hover{
+  color: #000000;
 }

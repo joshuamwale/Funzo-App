@@ -5,9 +5,9 @@ function TMModule() {
   return (
     <div>
       <div className='row'>
-          <div className='col-md-2 main-sidebar'><SideBar /></div>
+          <div className='col-md-2 tm-main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
-                TM Module Page
+                <h3>TM Module Page</h3>
           </div>
         </div>
     </div>

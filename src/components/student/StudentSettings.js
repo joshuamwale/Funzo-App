@@ -7,7 +7,7 @@ function StudentSettings() {
       <div className='row'>
           <div className='col-md-2 main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
-                Student settings
+                <h3>Student settings</h3>
           </div>
       </div>
     </div>
