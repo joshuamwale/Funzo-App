@@ -78,6 +78,11 @@
   /* text-align: calc(100% - 30px); */
   border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 }
-.nav-link.hover{
+.nav-link:hover{
   color: #000000;
+  text-decoration: none;
+}
+.nav-link:active{
+  color: #000000;
+  text-decoration: none;
 }
