@@ -15,6 +15,7 @@ function StudentSchedule() {
           </button>
           {/* add an accordion */}
           <div class="accordion" id="accordionExample">
+            {/* first accordion */}
             <div class="card z-depth-0 bordered">
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
@@ -37,86 +38,52 @@ function StudentSchedule() {
                 data-parent="#accordionExample"
               >
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa
-                  nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-                  aliqua put a bird on it squid single-origin coffee nulla
-                  assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                  beer labore wes anderson cred nesciunt sapiente ea proident.
-                  Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                  beer farm-to-table, raw denim aesthetic synth nesciunt you
-                  probably haven't heard of them accusamus labore sustainable.
-                </div>
-              </div>
-            </div>
-            <div class="card z-depth-0 bordered">
-              <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                  <button
-                    class="btn btn-link collapsed"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo"
-                  >
-                    Monday 13th November 2022
-                  </button>
-                </h5>
-              </div>
-              <div
-                id="collapseTwo"
-                class="collapse"
-                aria-labelledby="headingTwo"
-                data-parent="#accordionExample"
-              >
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa
-                  nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-                  aliqua put a bird on it squid single-origin coffee nulla
-                  assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                  beer labore wes anderson cred nesciunt sapiente ea proident.
-                  Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                  beer farm-to-table, raw denim aesthetic synth nesciunt you
-                  probably haven't heard of them accusamus labore sustainable.
-                </div>
-              </div>
-            </div>
-            <div class="card z-depth-0 bordered">
-              <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                  <button
-                    class="btn btn-link collapsed"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
-                  >
-                    Tuesday 14th November 2022
-                  </button>
-                </h5>
-              </div>
-              <div
-                id="collapseThree"
-                class="collapse"
-                aria-labelledby="headingThree"
-                data-parent="#accordionExample"
-              >
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa
-                  nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-                  aliqua put a bird on it squid single-origin coffee nulla
-                  assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                  beer labore wes anderson cred nesciunt sapiente ea proident.
-                  Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                  beer farm-to-table, raw denim aesthetic synth nesciunt you
-                  probably haven't heard of them accusamus labore sustainable.
+                  {/* editable table */}
+                  <div class="card">
+                    <div class="card-body">
+                      <div id="table" class="table-editable">
+                        <span class="table-add float-right mb-3 mr-2">
+                          <a href="#!" class="text-success">
+                            <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
+                          </a>
+                        </span>
+                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                          <thead>
+                            <tr>
+                              <th class="text-center">Module</th>
+                              <th class="text-center">Time</th>
+                              <th class="text-center">Link</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="pt-3-half" contenteditable="true">
+                                Aurelia Vega
+                              </td>
+                              <td class="pt-3-half" contenteditable="true">
+                                30
+                              </td>
+                              <td class="pt-3-half" contenteditable="true">
+                                Deepends
+                              </td>
+
+                              <td>
+                                <span class="table-remove">
+                                  <button
+                                    type="button"
+                                    class="btn btn-dark btn-rounded btn-sm my-0"
+                                  >
+                                    View
+                                  </button>
+                                </span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  {/* editable table */}
                 </div>
               </div>
             </div>
