@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import * as AiIcons from 'react-icons/ai';
+import * as GoIcons from 'react-icons/go';
 
 function SideBar() {
   return (
@@ -10,11 +12,11 @@ function SideBar() {
         </div>
 
         <div className="nav flex-column nav-pills me-3">
-          <Link to="/student" className='nav-link'> Home </Link>
-          <Link to="/student-schedule" className='nav-link'> Schedule </Link>
-          <Link to="/student-settings" className='nav-link'> Settings </Link>
-          <Link to="/student-discussion" className='nav-link'> Discussion </Link>
-          {/* <Link to="/student-logout" className='nav-link'> Logout </Link> */}
+          <Link to="/student" className='nav-link'><AiIcons.AiOutlineHome /> Home </Link>
+          <Link to="/student-schedule" className='nav-link'><AiIcons.AiOutlineSchedule /> Schedule </Link>
+          <Link to="/student-settings" className='nav-link'><AiIcons.AiOutlineSetting/> Settings </Link>
+          <Link to="/student-discussion" className='nav-link'><GoIcons.GoCommentDiscussion /> Discussion </Link>
+          {/* <Link to="/student-logout" className='nav-link'><AiIcons.AiOutlineLogout /> Logout </Link> */}
         </div>
     </div>
   )
