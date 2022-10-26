@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+/* customised */
+
+.main-sidebar{
+  background-color: #15133C;
+  color: #F1EEE9;
+  height: 100vh;
+}
+
+.logo{
+  width: 25%;
+  height: auto;
+  margin: 12px 0;
+}
