@@ -9,18 +9,17 @@ import StudentSchedule from "./components/student/StudentSchedule";
 import StudentSessionDetails from "./components/student/StudentSessionDetails";
 import StudentSettings from "./components/student/StudentSettings";
 
-import TMModule from "./components/tm/TMModule";
-import TMSchedule from "./components/tm/TMSchedule";
-import TMNewSession from "./components/tm/TMNewSession";
-import TMListOfStudents from "./components/tm/TMListOfStudents";
-import TMSessionDetails from "./components/tm/TMSessionDetails";
-import TMHome from "./components/tm/TMHome";
+import TMModule from './components/tm/TMModule'
+import TMSchedule from './components/tm/TMSchedule'
+import TMNewSession from './components/tm/TMNewSession'
+import TMModuleDetails from './components/tm/TMModuleDetails'
+import TMSessionDetails from './components/tm/TMSessionDetails'
+import TMHome from './components/tm/TMHome'
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <div className="col-md-10">
           <Routes>
             <Route exact path="/student" element={<StudentHome />}></Route>
             <Route
@@ -40,13 +39,14 @@ function App() {
             ></Route>
             <Route
               exact
-              path="/student-session-details/:comment_id"
-              element={<StudentJoinedDiscussion />}
-            ></Route>
-            <Route
-              exact
               path="/student-discussion"
               element={<StudentDiscussion />}
+            ></Route>
+
+            <Route
+              exact
+              path="/student-join-discussion/:comment_id"
+              element={<StudentJoinedDiscussion />}
             ></Route>
 
             <Route exact path="/tm" element={<TMHome />}></Route>
@@ -58,8 +58,8 @@ function App() {
             ></Route>
             <Route
               exact
-              path="/tm-list-of-students"
-              element={<TMListOfStudents />}
+              path="/tm-module-details/:module_id"
+              element={<TMModuleDetails />}
             ></Route>
             <Route
               exact
@@ -68,7 +68,6 @@ function App() {
             ></Route>
             <Route exact path="/tm-module" element={<TMModule />}></Route>
           </Routes>
-        </div>
       </Router>
     </div>
   );
