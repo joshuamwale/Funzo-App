@@ -48,6 +48,12 @@ function App() {
               element={<StudentDiscussion />}
             ></Route>
 
+            <Route
+              exact
+              path="/student-join-discussion/:comment_id"
+              element={<StudentJoinedDiscussion />}
+            ></Route>
+
             <Route exact path="/tm" element={<TMHome />}></Route>
             <Route exact path="/tm-schedule" element={<TMSchedule />}></Route>
             <Route
