@@ -39,13 +39,14 @@ function App() {
             ></Route>
             <Route
               exact
-              path="/student-session-details/:comment_id"
-              element={<StudentJoinedDiscussion />}
-            ></Route>
-            <Route
-              exact
               path="/student-discussion"
               element={<StudentDiscussion />}
+            ></Route>
+
+            <Route
+              exact
+              path="/student-join-discussion/:comment_id"
+              element={<StudentJoinedDiscussion />}
             ></Route>
 
             <Route exact path="/tm" element={<TMHome />}></Route>
