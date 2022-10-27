@@ -86,3 +86,112 @@
   color: #000000;
   text-decoration: none;
 }
+.summary-header{
+  width: 100%;
+}
+.summary-header .summary-title{
+  font-size: 18px;
+  margin-left: 20px;
+}
+.summary-button{
+  color: #ffffff;
+  background-color: #8D8787;
+  /* display: flex; */
+}
+.button-right{
+  float:right;
+}
+.summary-list{
+  width: 100%;
+}
+.discussion-list table{
+  margin: auto;
+}
+.discussion-description{
+  margin-left: 20px;
+  font-size: 16px;
+  color: #4d4b4b;
+}
+.discussion-student-comments{
+  width: 95%;
+  height: 70vh;
+  border: solid 1px rgba(255, 255, 255, 0.3);
+  margin: auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px 6px 0 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-family: manjari;
+}
+.chats{
+  padding: 10px;
+}
+.chats .student-name{
+  font-weight: bold;
+}
+.new-comment{
+  width: 95%;
+  height: 42px;
+  border: solid 1px rgba(255, 255, 255, 0.3);
+  margin: auto;
+  border-radius: 0 0 6px 6px;
+  position: relative;
+}
+.comment-text{
+  width: 96%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-family: manjari;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  border: none;
+  background-color: #fff;
+  background-clip: padding-box;
+}
+.send-button{
+  z-index: 1;
+  position: absolute;
+  right: 0.5px;
+  font-size:17px;
+  border-radius: 0 0px 6px 0;
+  color: #ffffff;
+  background-color: #8D8787;
+}
+.span-text{
+  font-size: 15px;
+}
+.student-list{
+  margin-top: 80px;
+}
+.student-summary{
+  height: 60vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.form-data{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+  display:none;
+}
+.entry-form{
+  width: 40%;
+  margin: auto;
+  background-color: #ffffff;
+  
+}
+.entry-data{
+  padding: 20px;
+  position: relative;
+  margin-top: 10%;
+}
+.button-links{
+  color: #ffffff;
+}
+.button-links:hover{
+  text-decoration: none;
+  color: #000000;
+}
