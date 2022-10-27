@@ -22,7 +22,6 @@ function App() {
       
       
       <Router>
-          <div className='col-md-10'>
                 <Routes>
                     <Route exact path="/student" element={<StudentHome />}></Route>
                     <Route exact path="/student-settings" element={<StudentSettings />}></Route>
@@ -38,7 +37,6 @@ function App() {
                     <Route exact path="/tm-session-details/:session_id" element={<TMSessionDetails />}></Route>
                     <Route exact path="/tm-module" element={<TMModule />}></Route>
                 </Routes>
-          </div>
         </Router>
     </div>
   );
