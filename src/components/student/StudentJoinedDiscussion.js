@@ -7,7 +7,10 @@ function StudentJoinedDiscussion() {
       <div className='row'>
           <div className='col-md-2 main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
-                <h3>Student Joined Discussion</h3>
+              <div className="discussion-header mt-4">
+                  <span className='discussion-title'>Ongoing Discussion</span>
+                  <button className='btn btn-sm discussion-button button-right'>Start Discussion</button>
+              </div>
           </div>
       </div>
     </div>

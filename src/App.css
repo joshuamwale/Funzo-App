@@ -86,3 +86,24 @@
   color: #000000;
   text-decoration: none;
 }
+.discussion-header{
+  width: 100%;
+}
+.discussion-header .discussion-title{
+  font-size: 18px;
+  margin-left: 20px;
+}
+.discussion-button{
+  color: #ffffff;
+  background-color: #8D8787;
+  /* display: flex; */
+}
+.button-right{
+  float:right;
+}
+.discussion-list{
+  width: 100%;
+}
+.discussion-list table{
+  margin: auto;
+}

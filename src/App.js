@@ -28,7 +28,7 @@ function App() {
                     <Route exact path="/student-settings" element={<StudentSettings />}></Route>
                     <Route exact path="/student-schedule" element={<StudentSchedule />}></Route>
                     <Route exact path="/student-session-details/:session_id" element={<StudentSessionDetails />}></Route>
-                    <Route exact path="/student-session-details/:comment_id" element={<StudentJoinedDiscussion />}></Route>
+                    <Route exact path="/student-join-discussion/:comment_id" element={<StudentJoinedDiscussion />}></Route>
                     <Route exact path="/student-discussion" element={<StudentDiscussion />}></Route>
 
                     <Route exact path="/tm" element={<TMHome />}></Route>
