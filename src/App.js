@@ -34,7 +34,7 @@ function App() {
                     <Route exact path="/tm" element={<TMHome />}></Route>
                     <Route exact path="/tm-schedule" element={<TMSchedule />}></Route>
                     <Route exact path="/tm-new-session" element={<TMNewSession />}></Route>
-                    <Route exact path="/tm-module-details" element={<TMModuleDetails />}></Route>
+                    <Route exact path="/tm-module-details/:module_id" element={<TMModuleDetails />}></Route>
                     <Route exact path="/tm-session-details/:session_id" element={<TMSessionDetails />}></Route>
                     <Route exact path="/tm-module" element={<TMModule />}></Route>
                 </Routes>

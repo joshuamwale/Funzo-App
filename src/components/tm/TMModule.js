@@ -1,18 +1,23 @@
 import React from 'react'
+import ModuleForm from './ModuleForm'
 import SideBar from './SideBar'
 
 function TMModule() {
   const mainColor = {
     backgroundColor:'#535678'
   }
+  function openFormData(){
+    document.getElementById("form-data").style.display="block";
+  }
   return (
     <div>
+      <ModuleForm />
       <div className='row'>
           <div className='col-md-2 tm-main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
               <div className="summary-header mt-4">
                 <span className='summary-title'>List of Modules</span>
-                <button className='btn btn-sm summary-button button-right'>Add Module</button>
+                <button className='btn btn-sm summary-button button-right' onClick={openFormData}>Add Module</button>
               </div>
               <div className='summary-list'>
                 <table class="table mt-4 table-striped table-hover table-sm ">
@@ -48,7 +53,7 @@ function TMModule() {
                 </table>
               </div>
           </div>
-        </div>
+      </div>
     </div>
   )
 }
