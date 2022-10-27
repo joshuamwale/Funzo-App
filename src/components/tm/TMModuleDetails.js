@@ -1,6 +1,7 @@
 import React from 'react'
 import SideBar from './SideBar'
 import ModuleForm from './ModuleForm'
+import NewStudent from './NewStudent'
 
 function TMModuleDetails() {
   const mainColor = {
@@ -10,10 +11,14 @@ function TMModuleDetails() {
   function openFormData(){
     document.getElementById("form-data").style.display="block";
   }
+  function openNewStudentForm(){
+    document.getElementById("student-form-data").style.display="block";
+  }
 
   return (
     <div>
       <ModuleForm />
+      <NewStudent />
       <div className='row'>
           <div className='col-md-2 tm-main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
@@ -43,7 +48,7 @@ function TMModuleDetails() {
             <div className='student-list container'>
               <div className="summary-header">
                 <span style={{fontWeight: 'bolder'}} className='span-text'>List of Students</span>
-                <button className='btn btn-sm summary-button button-right'>Add Student</button>
+                <button className='btn btn-sm summary-button button-right' onClick={openNewStudentForm}>Add Student</button>
               </div>
               <div className='student-summary mt-4'>
                 <table class="table table-striped table-hover table-sm ">

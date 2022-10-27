@@ -188,3 +188,10 @@
   position: relative;
   margin-top: 10%;
 }
+.button-links{
+  color: #ffffff;
+}
+.button-links:hover{
+  text-decoration: none;
+  color: #000000;
+}

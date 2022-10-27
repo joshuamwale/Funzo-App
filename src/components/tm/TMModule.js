@@ -1,6 +1,7 @@
 import React from 'react'
 import ModuleForm from './ModuleForm'
 import SideBar from './SideBar'
+import {Link} from 'react-router-dom'
 
 function TMModule() {
   const mainColor = {
@@ -32,22 +33,22 @@ function TMModule() {
                     <tr>
                       <th scope="row">1</th>
                       <td>HTML, CSS and Javascript Basic</td>
-                      <td><button className='btn btn-sm summary-button'>View</button></td>
+                      <td><button className='btn btn-sm summary-button'><Link to="/tm-module-details/1" className='button-links'>View</Link></button></td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
                       <td>Peact Javascript</td>
-                      <td><button className='btn btn-sm summary-button'>View</button></td>
+                      <td><button className='btn btn-sm summary-button'><Link to="/tm-module-details/1" className='button-links'>View</Link></button></td>
                     </tr>
                     <tr>
                       <th scope="row">3</th>
                       <td>Ruby Programming</td>
-                      <td><button className='btn btn-sm summary-button'>View</button></td>
+                      <td><button className='btn btn-sm summary-button'><Link to="/tm-module-details/1" className='button-links'>View</Link></button></td>
                     </tr>
                     <tr>
                       <th scope="row">4</th>
                       <td>Ruby On Rails Web Development</td>
-                      <td><button className='btn btn-sm summary-button'>View</button></td>
+                      <td><button className='btn btn-sm summary-button'><Link to="/tm-module-details/1" className='button-links'>View</Link></button></td>
                     </tr>
                   </tbody>
                 </table>
