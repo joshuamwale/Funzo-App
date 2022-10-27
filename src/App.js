@@ -12,7 +12,7 @@ import StudentSettings from './components/student/StudentSettings'
 import TMModule from './components/tm/TMModule'
 import TMSchedule from './components/tm/TMSchedule'
 import TMNewSession from './components/tm/TMNewSession'
-import TMListOfStudents from './components/tm/TMListOfStudents'
+import TMModuleDetails from './components/tm/TMModuleDetails'
 import TMSessionDetails from './components/tm/TMSessionDetails'
 import TMHome from './components/tm/TMHome'
 
@@ -34,7 +34,7 @@ function App() {
                     <Route exact path="/tm" element={<TMHome />}></Route>
                     <Route exact path="/tm-schedule" element={<TMSchedule />}></Route>
                     <Route exact path="/tm-new-session" element={<TMNewSession />}></Route>
-                    <Route exact path="/tm-list-of-students" element={<TMListOfStudents />}></Route>
+                    <Route exact path="/tm-module-details" element={<TMModuleDetails />}></Route>
                     <Route exact path="/tm-session-details/:session_id" element={<TMSessionDetails />}></Route>
                     <Route exact path="/tm-module" element={<TMModule />}></Route>
                 </Routes>

@@ -1,7 +1,7 @@
 import React from 'react'
 import SideBar from './SideBar'
 
-function TMListOfStudents() {
+function TMModuleDetails() {
   return (
     <div>
       <div className='row'>
@@ -14,4 +14,4 @@ function TMListOfStudents() {
   )
 }
 
-export default TMListOfStudents
+export default TMModuleDetails
