@@ -8,7 +8,7 @@ function TMModuleDetails() {
 
   const [module, setModule] = useState('')
   let {module_id} =  useParams()
-  console.log(module_id)
+  // console.log(module_id)
 
   useEffect(() => {
     fetch(`/cohorts/${module_id}`)
@@ -69,12 +69,14 @@ function TMModuleDetails() {
                     </tr>
                   </thead>
                   <tbody>
+                  {/* {Array.from(module).map((cohort) => (
                     <tr>
-                      <th scope="row">1</th>
-                      <td>Student1</td>
-                      <td>student1@gmail.com</td>
+                      <th scope="row">{cohort.id}</th>
+                      <td>{cohort.name}</td>
+                      <td>{cohort.email}</td>
                       <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
                     </tr>
+                  ))} */}
                     <tr>
                       <th scope="row">2</th>
                       <td>Student2</td>
