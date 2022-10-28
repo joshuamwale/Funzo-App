@@ -1,15 +1,23 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import ModuleForm from './ModuleForm'
 import SideBar from './SideBar'
 import {Link} from 'react-router-dom'
 
 function TMModule() {
+  const [modules, setModules] = useState("")
   const mainColor = {
     backgroundColor:'#535678'
   }
   function openFormData(){
     document.getElementById("form-data").style.display="block";
   }
+
+  useEffect(() =>{
+    fetch("/cohorts")
+    .then(r => r.json())
+    .then(response => setModules(response))
+  },[])
+
   return (
     <div>
       <ModuleForm />
@@ -30,12 +38,15 @@ function TMModule() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>HTML, CSS and Javascript Basic</td>
-                      <td><button className='btn btn-sm summary-button'><Link to="/tm-module-details/1" className='button-links'>View</Link></button></td>
-                    </tr>
-                    <tr>
+                    {Array.from(modules).map((cohort) => (
+                      <tr key={cohort.id}>
+                        <th scope="row">{cohort.id}</th>
+                        <td>{cohort.name}</td>
+                        <td><button className='btn btn-sm summary-button'><Link to={`/tm-module-details/${cohort.id}`} className='button-links'>View</Link></button></td>
+                      </tr>
+                    ))}
+                    
+                    {/* <tr>
                       <th scope="row">2</th>
                       <td>Peact Javascript</td>
                       <td><button className='btn btn-sm summary-button'><Link to="/tm-module-details/1" className='button-links'>View</Link></button></td>
@@ -49,7 +60,7 @@ function TMModule() {
                       <th scope="row">4</th>
                       <td>Ruby On Rails Web Development</td>
                       <td><button className='btn btn-sm summary-button'><Link to="/tm-module-details/1" className='button-links'>View</Link></button></td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table>
               </div>
