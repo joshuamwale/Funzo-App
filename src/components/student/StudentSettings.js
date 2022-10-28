@@ -1,6 +1,5 @@
-
 import SideBar from './SideBar'
-import React, { Component } from 'react'
+import React, { Component, seEffect, useState} from 'react'
 import './studentsettings.css'
 
 
@@ -44,6 +43,18 @@ class StudentSettings extends Component {
           password: event.target.value
       })
   }
+
+  // useEffect(() =>{
+  //   fetch("/sessions")
+  //   .then(r => r.json())
+  //   .then(response => setCohortSession(response))
+  // },[]);
+
+  // const today_date = new Date()
+  // console.log(today_date)
+  // const display = cohortSession.filter((cohort) => {
+  //   return cohort.date === parseInt(today_date)
+  // });
 
   
   handleSubmit = (event) => {

@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import SideBar from './SideBar'
 
 function StudentSessionDetails() {
+  // useEffect(() =>{
+  //   fetch("/sessions")
+  //   .then(r => r.json())
+  //   .then(response => setCohortSession(response))
+  // },[]);
+
+  // const today_date = new Date()
+  // console.log(today_date)
+  // const display = cohortSession.filter((cohort) => {
+  //   return cohort.date === parseInt(today_date)
+  // });
+
   return (
     <div>
       <div className='row'>
@@ -15,10 +27,10 @@ function StudentSessionDetails() {
                 <div className="summary-header mt-4 container">
                   <div className='row'>
                     <div className='col-4'>
-                      <span style={{fontWeight: 'bolder'}} className='summary-title'>Module Name:</span>
+                      <span style={{fontWeight: 'bolder'}} className='summary-title'>Session Name:</span>
                     </div>
                     <div className='col-8'>
-                    <span className='summary-title'>Module Name</span>
+                    <span className='summary-title'>Session Name</span>
                     </div>
                   </div>
                   <div className='row mt-2'>
