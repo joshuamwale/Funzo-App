@@ -25,15 +25,80 @@ function TMSchedule() {
 
           <div className="session-row">
             <h3>Schedule</h3>
+            {/* add a schedule model to add a new aschedule */}
             <button
               type="button"
-              class="btn btn-secondary"
-              id="add-session-btn"
-              Link
-              to="/add-session" // this is where the add session button will link to
+              class="btn btn-dark"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              data-whatever="@mdo"
             >
-              Add Session
+              Add Schedule
             </button>
+
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Add a Schedule
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">
+                          Schedule Name:
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="recipient-name"
+                        ></input>
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">
+                          Date:
+                        </label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="recipient-name"
+                        ></input>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                      Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* end of add schedule modal */}
           </div>
           {/* add an accordion */}
           <div class="accordion" id="accordionExample">

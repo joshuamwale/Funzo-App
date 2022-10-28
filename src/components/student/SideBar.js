@@ -8,7 +8,7 @@ function SideBar() {
     <div>
         {/* <span className='bar'><AiIcons.AiOutlineBars /></span> */}
         <div className='profile'>
-            <img className='logo' src='https://cdn2.iconfinder.com/data/icons/social-media-flat-line/70/user-512.png'/>
+            <img className='logo' alt='' src='https://cdn2.iconfinder.com/data/icons/social-media-flat-line/70/user-512.png'/>
             <p className='user-name'>User name</p>
         </div>
 

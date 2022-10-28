@@ -1,9 +1,21 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import SideBar from './SideBar'
 import ModuleForm from './ModuleForm'
 import NewStudent from './NewStudent'
+import { useParams } from 'react-router-dom';
 
 function TMModuleDetails() {
+
+  const [module, setModule] = useState('')
+  let {module_id} =  useParams()
+  console.log(module_id)
+
+  useEffect(() => {
+    fetch(`/cohorts/${module_id}`)
+    .then(res => res.json())
+    .then(res => setModule(res))
+  }, [module_id])
+
   const mainColor = {
     backgroundColor:'#535678'
   }
@@ -28,7 +40,7 @@ function TMModuleDetails() {
                     <span style={{fontWeight: 'bolder'}} className='span-text'>Module Name:</span>
                   </div>
                   <div className='col-9'>
-                  <span className='span-text'>Lorem Ipsum</span>
+                  <span className='span-text'>{module.name}</span>
                   </div>
                 </div>
                 <div className='row mt-2'>
@@ -36,11 +48,7 @@ function TMModuleDetails() {
                     <span style={{fontWeight: 'bolder'}} className='span-text'>Module Description:</span>
                   </div>
                   <div className='col-9'>
-                  <span className='span-text'>Lorem Ipsum dolor sit amet, 
-                    consectetur adipiscing, sed eiusmod tempor  Ipsum dolor sit amet, 
-                    consectetur adipiscing, sed eiusmod ipsum dolor sit amet, 
-                    consectetur adipiscing, sed eiusmod tempor incidunt
-                  </span>
+                  <span className='span-text'>{module.description}</span>
                   </div>
                 </div>
                 <button className='btn btn-sm btn-outline-success button-right' onClick={openFormData}>edit module</button>
