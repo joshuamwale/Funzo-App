@@ -1,6 +1,7 @@
-/* .App {
-  text-align: center;
-} */
+.App {
+  /* text-align: center; */
+  font-family: manjari;
+} 
 
 .App-logo {
   height: 40vmin;
@@ -108,9 +109,10 @@
 .summary-header{
   width: 100%;
 }
-.summary-header .summary-title{
+.summary-title{
   font-size: 18px;
   margin-left: 20px;
+  font-family: manjari;
 }
 .summary-button{
   color: #ffffff;
@@ -214,4 +216,36 @@
   text-decoration: none;
   color: #000000;
 }
-
+.attendees-list-summary{
+  width: 90%;
+  height: 50vh;
+  border: solid 1px #cfcece;
+  margin: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.announcement-summary{
+  width: 80%;
+  height: 60vh;
+  border: solid 1px #cfcece;
+  margin: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.adding-comment {
+  width: 80%;
+  height: 40px;
+  border: solid 1px #cfcece;
+  margin: auto;
+}
+.student-comment-text{
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-family: manjari;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  border: none;
+  background-color: #fff;
+}
