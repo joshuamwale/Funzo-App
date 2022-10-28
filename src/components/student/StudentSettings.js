@@ -1,7 +1,7 @@
 import React from 'react'
 import SideBar from './SideBar'
 import React, { Component } from 'react'
-import './CSS/todo.css'
+import './CSS/studentsettings.css'
 
 
 class Form extends Component {
@@ -82,7 +82,6 @@ class Form extends Component {
               </form>
 
           </div>
-          
       )
   }
 }
