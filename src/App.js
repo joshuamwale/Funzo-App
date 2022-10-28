@@ -8,6 +8,8 @@ import StudentJoinedDiscussion from "./components/student/StudentJoinedDiscussio
 import StudentSchedule from "./components/student/StudentSchedule";
 import StudentSessionDetails from "./components/student/StudentSessionDetails";
 import StudentSettings from "./components/student/StudentSettings";
+import StudentLogin from "./components/student/StudentLogin";
+
 
 import TMModule from './components/tm/TMModule'
 import TMSchedule from './components/tm/TMSchedule'
@@ -15,12 +17,15 @@ import TMNewSession from './components/tm/TMNewSession'
 import TMModuleDetails from './components/tm/TMModuleDetails'
 import TMSessionDetails from './components/tm/TMSessionDetails'
 import TMHome from './components/tm/TMHome'
+import TMLogin from "./components/tm/TMLogin";
+
 
 function App() {
   return (
     <div className="App">
       <Router>
           <Routes>
+            <Route exact path="/student-login" element={<StudentLogin/>}></Route>
             <Route exact path="/student" element={<StudentHome />}></Route>
             <Route
               exact
@@ -50,6 +55,7 @@ function App() {
             ></Route>
 
             <Route exact path="/tm" element={<TMHome />}></Route>
+            <Route exact path="/tm-login" element={<TMLogin />}></Route>
             <Route exact path="/tm-schedule" element={<TMSchedule />}></Route>
             <Route
               exact

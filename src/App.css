@@ -491,3 +491,17 @@
   background-color: #fff;
 }
 
+.auth-form{
+  width: 40%;
+  margin: auto;
+  margin-top: 60px;
+  border: solid 1px #8D8787;
+  border-radius: 4px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
+}
+.auth-data{
+  padding: 30px;
+  position: relative;
+}
+
