@@ -1,5 +1,6 @@
 import React from "react";
 import SideBar from "./SideBar";
+import {Link} from 'react-router-dom'
 
 function TMSchedule() {
   return (
@@ -160,7 +161,7 @@ function TMSchedule() {
                                     type="button"
                                     class="btn btn-dark btn-rounded btn-sm my-0"
                                   >
-                                    View
+                                    <Link to={`/tm-session-details/1`} className='button-links'>View</Link>
                                   </button>
                                 </span>
                               </td>
@@ -237,7 +238,7 @@ function TMSchedule() {
                                     type="button"
                                     class="btn btn-dark btn-rounded btn-sm my-0"
                                   >
-                                    View
+                                    <Link to={`/tm-session-details/1`} className='button-links'>View</Link>
                                   </button>
                                 </span>
                               </td>
