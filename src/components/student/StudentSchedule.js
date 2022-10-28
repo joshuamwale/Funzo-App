@@ -1,5 +1,6 @@
 import React from "react";
 import SideBar from "./SideBar";
+import {Link} from 'react-router-dom'
 
 function StudentSchedule() {
   return (
@@ -87,7 +88,7 @@ function StudentSchedule() {
                                     type="button"
                                     class="btn btn-dark btn-rounded btn-sm my-0"
                                   >
-                                    View
+                                    <Link to={`/student-session-details/1`} className='button-links'>View</Link>
                                   </button>
                                 </span>
                               </td>

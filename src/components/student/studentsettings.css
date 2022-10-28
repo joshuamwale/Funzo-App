@@ -1,0 +1,42 @@
+  h1{
+    font-size: 38px;
+  }
+  
+  select {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(10, 10, 10);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  
+  .container{
+    background-color: antiquewhite;
+    border-style: hidden;
+    border-radius: 15px;
+    padding:18px;
+    text-align: center;
+    box-shadow: 0 8px 6px -6px black;
+    
+  }
+  @media screen and (max-width:900px){
+  
+      .main-contianer{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-evenly; 
+        
+      }
+    
+    }
+  
+  .student-settings {
+    width: 60%;
+    margin: auto;
+  }
