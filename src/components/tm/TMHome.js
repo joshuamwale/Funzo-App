@@ -1,8 +1,22 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import SideBar from './SideBar'
 import {Link} from 'react-router-dom'
 
 function TMHome() {
+  const [cohortSession, setCohortSession] = useState("")
+
+  useEffect(() =>{
+    fetch("/sessions")
+    .then(r => r.json())
+    .then(response => setCohortSession(response))
+  },[]);
+
+  const today_date = new Date()
+  // console.log(today_date)
+  // const display = cohortSession.filter((cohort) => {
+  //   return cohort.date === parseInt(today_date)
+  // });
+
   return (
     <div>
       <div className='row'>
@@ -42,37 +56,40 @@ function TMHome() {
                             <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
                           </a>
                         </span>
-                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                        <table class="table table-bordered table-responsive-md table-striped table-sm">
                           <thead>
                             <tr>
-                              <th class="text-center">Module</th>
+                              <th class="text-centeyr">Session Name</th>
                               <th class="text-center">Time</th>
                               <th class="text-center">Link</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td class="pt-3-half" contenteditable="true">
-                                Aurelia Vega
-                              </td>
-                              <td class="pt-3-half" contenteditable="true">
-                                30
-                              </td>
-                              <td class="pt-3-half" contenteditable="true">
-                                Deepends
-                              </td>
+                            {Array.from(cohortSession).map((today) =>(
+                                <tr>
+                                <td class="pt-3-half" contenteditable="true">
+                                  {today.session_name}
+                                </td>
+                                <td class="pt-3-half" contenteditable="true">
+                                  {today.time}
+                                </td>
+                                <td class="pt-3-half" contenteditable="true">
+                                  {today.link}
+                                </td>
 
-                              <td>
-                                <span class="table-remove">
-                                  <button
-                                    type="button"
-                                    class="btn btn-dark btn-rounded btn-sm my-0"
-                                  >
-                                    <Link to={`/tm-session-details/1`} className='button-links'>View</Link>
-                                  </button>
-                                </span>
-                              </td>
-                            </tr>
+                                <td>
+                                  <span class="table-remove">
+                                    <button
+                                      type="button"
+                                      class="btn btn-dark btn-rounded btn-sm my-0"
+                                    >
+                                      <Link to={`/tm-session-details/${today.id}`} className='button-links'>View</Link>
+                                    </button>
+                                  </span>
+                                </td>
+                              </tr>
+                            ))}
+                            
                           </tbody>
                         </table>
                       </div>
