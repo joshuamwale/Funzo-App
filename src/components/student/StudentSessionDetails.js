@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import SideBar from './SideBar'
+import { useParams } from 'react-router-dom';
 
 function StudentSessionDetails() {
-  // useEffect(() =>{
-  //   fetch("/sessions")
-  //   .then(r => r.json())
-  //   .then(response => setCohortSession(response))
-  // },[]);
+  const [studentSession, setStudentSession] = useState('')
+  let {session_id} =  useParams()
+  useEffect(() =>{
+    fetch(`/sessions/${session_id}`)
+    .then(r => r.json())
+    .then(response => setStudentSession(response))
+  },[]);
 
   // const today_date = new Date()
   // console.log(today_date)
@@ -30,7 +33,7 @@ function StudentSessionDetails() {
                       <span style={{fontWeight: 'bolder'}} className='summary-title'>Session Name:</span>
                     </div>
                     <div className='col-8'>
-                    <span className='summary-title'>Session Name</span>
+                    <span className='summary-title'>{studentSession.session_name}</span>
                     </div>
                   </div>
                   <div className='row mt-2'>
@@ -38,7 +41,7 @@ function StudentSessionDetails() {
                       <span style={{fontWeight: 'bolder'}} className='summary-title'>Time:</span>
                     </div>
                     <div className='col-8'>
-                    <span className='summary-title'>time</span>
+                    <span className='summary-title'>{studentSession.time}</span>
                     </div>
                   </div>
                   <div className='row mt-2'>
@@ -46,7 +49,7 @@ function StudentSessionDetails() {
                       <span style={{fontWeight: 'bolder'}} className='summary-title'>Mentor:</span>
                     </div>
                     <div className='col-8'>
-                    <span className='summary-title'>tm name</span>
+                    <span className='summary-title'>{studentSession.technical_mentor_id}</span>
                     </div>
                   </div>
                   <div className='row mt-2'>
@@ -54,7 +57,7 @@ function StudentSessionDetails() {
                       <span style={{fontWeight: 'bolder'}} className='summary-title'>Link:</span>
                     </div>
                     <div className='col-8'>
-                    <span className='summary-title'>link Description</span>
+                    <span className='summary-title'>{studentSession.link}</span>
                     </div>
                   </div>
               </div>

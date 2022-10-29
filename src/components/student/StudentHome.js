@@ -84,7 +84,7 @@ function StudentHome() {
                                       type="button"
                                       class="btn btn-dark btn-rounded btn-sm my-0"
                                     >
-                                      <Link to={`/student-session-details/1`} className='button-links'>View</Link>
+                                      <Link to={`/student-session-details/${today.id}`} className='button-links'>View</Link>
                                     </button>
                                   </span>
                                 </td>
