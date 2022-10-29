@@ -12,7 +12,7 @@ function StudentHome() {
   },[]);
 
   const today_date = new Date()
-  console.log(today_date)
+  // console.log(today_date)
   // const display = cohortSession.filter((cohort) => {
   //   return cohort.date === parseInt(today_date)
   // });
@@ -57,7 +57,7 @@ function StudentHome() {
                             <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
                           </a>
                         </span>
-                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                        <table class="table table-bordered table-responsive-md table-striped table-sm">
                           <thead>
                             <tr>
                               <th class="text-center">Session Name</th>

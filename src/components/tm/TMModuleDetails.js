@@ -74,9 +74,9 @@ function TMModuleDetails() {
                   {Array.from(module).map((cohort) => (
                     // console.log(cohort)
                     <tr>
-                      <th scope="row">{cohort.students[0].id}</th>
-                      <td>{cohort.students[0].name}</td>
-                      <td>{cohort.students[0].email}</td>
+                      <th scope="row">{cohort.students.id}</th>
+                      <td>{cohort.students.name}</td>
+                      <td>{cohort.students.email}</td>
                       <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
                     </tr>
                   ))}

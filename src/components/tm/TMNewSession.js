@@ -1,9 +1,8 @@
 import SideBar from './SideBar'
-import React, { Component, seEffect, useState} from 'react'
-import './studentsettings.css'
+import React, { Component, useEffect, useState} from 'react'
 
 
-class Form extends Component {
+class TMNewSession extends Component {
   constructor(props) {
       super(props)
 

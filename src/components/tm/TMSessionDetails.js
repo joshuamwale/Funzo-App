@@ -1,7 +1,47 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import SideBar from './SideBar'
+import { useParams } from 'react-router-dom';
 
 function TMSessionDetails() {
+
+  const [tmSession, setTmSession] = useState('')
+
+  let {session_id} =  useParams()
+  useEffect(() =>{
+    fetch(`/sessions/${session_id}`)
+    .then(r => r.json())
+    .then(response => setTmSession(response))
+  },[]);
+
+  const [schedule, setSchedule] = useState({
+      session_name: '',
+      cohort_id: '',
+      technical_mentor_id: '',
+      date: '',
+      time: '',
+      link: ''
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = {
+      session_name: schedule.session_name,
+      cohort_id: schedule.cohort_id,
+      technical_mentor_id: 1,
+      date: schedule.date,
+      time: schedule.time,
+      link: schedule.link
+    };
+  }
+
+  function handleChange(event) {
+    setSchedule({
+      ...schedule,
+      [event.target.name]: event.target.value,
+    });
+  }
+
   return (
     <div>
       <div className='row'>
@@ -17,19 +57,39 @@ function TMSessionDetails() {
                   <div className='entry-data'>
                       <div class="mb-3 mt-1">
                           <label className="form-label">Session Name</label>
-                          <input type="text" className="form-control" />
+                          <input type="text"
+                            className="form-control"
+                            name='session-name'
+                            value={tmSession.session_name}
+                            onChange={handleChange}
+                             />
                       </div>
                       <div class="mb-3 mt-3">
                           <label className="form-label">Date</label>
-                          <input type="date" className="form-control" />
+                          <input type="date" 
+                            className="form-control"
+                            name='session-date'
+                            value={tmSession.date}
+                            onChange={handleChange}
+                             />
                       </div>
                       <div class="mb-3 mt-3">
                           <label className="form-label">Time</label>
-                          <input type="time" className="form-control" />
+                          <input type="time" 
+                            className="form-control" 
+                            name='session-time'
+                            value={tmSession.time}
+                            onChange={handleChange}
+                          />
                       </div>
                       <div class="mb-3 mt-3">
                           <label className="form-label">Link</label>
-                          <input type="text" className="form-control" />
+                          <input type="text" 
+                            className="form-control" 
+                            name='session-link'
+                            value={tmSession.link}
+                            onChange={handleChange}
+                          />
                       </div>
                       <div class="mb-3 mt-3 form-check">
                         <input type="checkbox" class="form-check-input"/>
