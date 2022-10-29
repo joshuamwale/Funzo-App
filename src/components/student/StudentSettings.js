@@ -2,7 +2,6 @@ import SideBar from './SideBar'
 import React, { Component, seEffect, useState} from 'react'
 import './studentsettings.css'
 
-
 class StudentSettings extends Component {
   constructor(props) {
       super(props)
