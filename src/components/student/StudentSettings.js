@@ -2,30 +2,24 @@ import SideBar from './SideBar'
 import React, { Component, seEffect, useState} from 'react'
 import './studentsettings.css'
 
-
 class StudentSettings extends Component {
   constructor(props) {
       super(props)
 
       this.state = {
-          firstName: "",
-          lastName: "",
+          Name: "",
           email: "",
           phone: "",
+          image: "",
           password: ""
 
       }
       this.handleSubmit=this.handleSubmit.bind(this)
   }
 
-  firsthandler = (event) => {
+  Namehandler = (event) => {
       this.setState({
-          firstName: event.target.value
-      })
-  }
-  lasthandler = (event) => {
-      this.setState({
-          lastName: event.target.value
+          Name: event.target.value
       })
   }
   emailhandler = (event) => {
@@ -36,6 +30,11 @@ class StudentSettings extends Component {
   phonehandler = (event) => {
       this.setState({
           phone: event.target.value
+      })
+  }
+  imagehandler = (event) => {
+      this.setState({
+          image: event.target.value
       })
   }
   passwordhandler = (event) => {
@@ -58,13 +57,13 @@ class StudentSettings extends Component {
 
   
   handleSubmit = (event) => {
-      alert(`${this.state.firstName} ${this.state.lastName}  Update Successfull !!!!`)
+      alert(`${this.state.name} ${this.state.email}  Update Successfull !!!!`)
       console.log(this.state);
       this.setState({
-          firstName: "",
-          lastName: "",
+          Name: "",
           email: "",
           phone: "",
+          image: "",
           password: '',
           
       })
@@ -81,10 +80,10 @@ class StudentSettings extends Component {
               <div className="col-md-10">
               <form onSubmit={this.handleSubmit} className="student-settings">
                   <h1>Edit Profile</h1>
-                  <label className='form-label'>FastName :</label> <input className='form-control' type="text" value={this.state.FirstName} onChange={this.firsthandler} placeholder="FirstName..." /><br />
-                  <label className='form-label'>LasName :</label> <input className='form-control' type="text" value={this.state.lastName} onChange={this.lasthandler} placeholder="Last..." /><br />
+                  <label className='form-label'>Name :</label> <input className='form-control' type="text" value={this.state.Name} onChange={this.Namehandler} placeholder="Name..." /><br />
                   <label className='form-label'>Email :</label> <input className='form-control' type="text" value={this.state.email} onChange={this.emailhandler} placeholder="Email..." /><br />
-                  <label className='form-label'>Phone :</label> <input className='form-control' type="text" value={this.state.phone} onChange={this.phonehandler} placeholder="Phone..." /><br />
+                  <label className='form-label'>Phone:</label> <input className='form-control' type="text" value={this.state.phone} onChange={this.phonehandler} placeholder="Phone..." /><br />
+                  <label className='form-label'>Image :</label> <input className='form-control-file' type="file" value={this.state.image} onChange={this.imagehandler} placeholder="Image..." /><br />
                   <label className='form-label'>Password :</label> <input className='form-control' type="password" value={this.state.password} onChange={this.passwordhandler} placeholder="Password..." /><br />
                   
                   <input type="submit" value="Submit" />
