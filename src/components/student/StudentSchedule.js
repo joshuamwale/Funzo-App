@@ -1,8 +1,21 @@
-import React from "react";
+import React, {useEffect, useState} from 'react'
 import SideBar from "./SideBar";
 import {Link} from 'react-router-dom'
 
 function StudentSchedule() {
+
+  // useEffect(() =>{
+  //   fetch("/sessions")
+  //   .then(r => r.json())
+  //   .then(response => setCohortSession(response))
+  // },[]);
+
+  // const today_date = new Date()
+  // console.log(today_date)
+  // const display = cohortSession.filter((cohort) => {
+  //   return cohort.date === parseInt(today_date)
+  // });
+
   return (
     <div>
       <div className="row">
