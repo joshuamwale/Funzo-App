@@ -12,16 +12,20 @@ function TMSessionDetails() {
                 <div className="summary-header mt-4">
                   <span className='summary-title'>Module Name</span>
                 </div>
-                <div className="summary-header mt-4 container">
+                <div className="summary-header mt-2 container">
                 <form className=''>
                   <div className='entry-data'>
-                      <div class="mb-3 mt-5">
-                          <label className="form-label">Name</label>
+                      <div class="mb-3 mt-1">
+                          <label className="form-label">Session Name</label>
                           <input type="text" className="form-control" />
                       </div>
                       <div class="mb-3 mt-3">
+                          <label className="form-label">Date</label>
+                          <input type="date" className="form-control" />
+                      </div>
+                      <div class="mb-3 mt-3">
                           <label className="form-label">Time</label>
-                          <input type="text" className="form-control" />
+                          <input type="time" className="form-control" />
                       </div>
                       <div class="mb-3 mt-3">
                           <label className="form-label">Link</label>

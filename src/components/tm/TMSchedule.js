@@ -1,7 +1,56 @@
-import React from "react";
+import React ,{useState, useEffect} from "react";
 import SideBar from "./SideBar";
+import {Link} from 'react-router-dom'
 
 function TMSchedule() {
+  const [modules, setModules] = useState("")
+  const [schedule, setSchedule] = useState({
+      session_name: '',
+      cohort_id: '',
+      technical_mentor_id: '',
+      date: '',
+      time: '',
+      link: ''
+  });
+
+  function handleChange(event) {
+    setSchedule({
+      ...schedule,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = {
+      session_name: schedule.session_name,
+      cohort_id: schedule.cohort_id,
+      technical_mentor_id: 1,
+      date: schedule.date,
+      time: schedule.time,
+      link: schedule.link
+    };
+
+    // console.log(formData)
+    fetch("/sessions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData ),
+    })
+    alert('sucess')
+      // .then((r) => r.json())
+      // .then((user) => onLogin(user));
+  }
+
+  useEffect(() =>{
+    fetch("/cohorts")
+    .then(r => r.json())
+    .then(response => setModules(response))
+  },[])
+
   return (
     <div>
       <div className="row">
@@ -60,15 +109,18 @@ function TMSchedule() {
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">
-                          Schedule Name:
+                          Session Name:
                         </label>
                         <input
                           type="text"
+                          name='session_name'
                           class="form-control"
-                          id="recipient-name"
+                          id="session-name"
+                          value={schedule.session_name}
+                          onChange={handleChange}
                         ></input>
                       </div>
                       <div class="form-group">
@@ -78,22 +130,58 @@ function TMSchedule() {
                         <input
                           type="date"
                           class="form-control"
-                          id="recipient-name"
+                          name='date'
+                          id="date"
+                          value={schedule.date}
+                          onChange={handleChange}
                         ></input>
                       </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">
+                          Time:
+                        </label>
+                        <input
+                          type="time"
+                          class="form-control"
+                          name='time'
+                          id="time"
+                          value={schedule.time}
+                          onChange={handleChange}
+                        ></input>
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">
+                          Module:
+                        </label>
+                        <select class="form-control"
+                          name='cohort_id'
+                          value={schedule.cohort_id}
+                          onChange={handleChange}
+                        >
+                          {Array.from(modules).map((cohort) => (
+                            <option key={cohort.id} value={cohort.id}>{cohort.name}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">
+                          Link:
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="link"
+                          name='link'
+                          value={schedule.link}
+                          onChange={handleChange}
+                        ></input>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">
+                          Add
+                        </button>
+                      </div>
                     </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                      Add
-                    </button>
                   </div>
                 </div>
               </div>
@@ -160,7 +248,7 @@ function TMSchedule() {
                                     type="button"
                                     class="btn btn-dark btn-rounded btn-sm my-0"
                                   >
-                                    View
+                                    <Link to={`/tm-session-details/1`} className='button-links'>View</Link>
                                   </button>
                                 </span>
                               </td>
@@ -237,7 +325,7 @@ function TMSchedule() {
                                     type="button"
                                     class="btn btn-dark btn-rounded btn-sm my-0"
                                   >
-                                    View
+                                    <Link to={`/tm-session-details/1`} className='button-links'>View</Link>
                                   </button>
                                 </span>
                               </td>

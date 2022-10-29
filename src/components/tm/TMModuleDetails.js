@@ -8,7 +8,7 @@ function TMModuleDetails() {
 
   const [module, setModule] = useState('')
   let {module_id} =  useParams()
-  console.log(module_id)
+  // console.log(module_id)
 
   useEffect(() => {
     fetch(`/cohorts/${module_id}`)
@@ -27,6 +27,8 @@ function TMModuleDetails() {
     document.getElementById("student-form-data").style.display="block";
   }
 
+  // const student_modules = module.student_modules
+  
   return (
     <div>
       <ModuleForm />
@@ -69,13 +71,16 @@ function TMModuleDetails() {
                     </tr>
                   </thead>
                   <tbody>
+                  {Array.from(module).map((cohort) => (
+                    // console.log(cohort)
                     <tr>
-                      <th scope="row">1</th>
-                      <td>Student1</td>
-                      <td>student1@gmail.com</td>
+                      <th scope="row">{cohort.students[0].id}</th>
+                      <td>{cohort.students[0].name}</td>
+                      <td>{cohort.students[0].email}</td>
                       <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
                     </tr>
-                    <tr>
+                  ))}
+                    {/* <tr>
                       <th scope="row">2</th>
                       <td>Student2</td>
                       <td>student2@gmail.com</td>
@@ -188,7 +193,7 @@ function TMModuleDetails() {
                       <td>Student5</td>
                       <td>student5@gmail.com</td>
                       <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table>
               </div>
