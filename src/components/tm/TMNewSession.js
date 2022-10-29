@@ -2,6 +2,7 @@ import SideBar from './SideBar'
 import React, { Component, seEffect, useState} from 'react'
 import './studentsettings.css'
 
+
 class Form extends Component {
   constructor(props) {
       super(props)
