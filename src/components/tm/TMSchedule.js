@@ -13,6 +13,7 @@ function TMSchedule() {
       link: ''
   });
 
+
   const [cohortSession, setCohortSession] = useState("")
 
   useEffect(() =>{
@@ -321,7 +322,7 @@ function TMSchedule() {
                             <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
                           </a>
                         </span>
-                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                        <table class="table table-bordered table-responsive-md table-striped table-sm">
                         <thead>
                             <tr>
                               <th class="text-center">Session Name</th>
