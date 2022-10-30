@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import SideBar from './SideBar'
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 function StudentSessionDetails() {
   const [studentSession, setStudentSession] = useState('')
@@ -57,7 +57,7 @@ function StudentSessionDetails() {
                       <span style={{fontWeight: 'bolder'}} className='summary-title'>Link:</span>
                     </div>
                     <div className='col-8'>
-                    <span className='summary-title'>{studentSession.link}</span>
+                    <span className='summary-title'><a href={`${studentSession.link}`}>{studentSession.link}</a></span>
                     </div>
                   </div>
               </div>
@@ -100,8 +100,7 @@ function StudentSessionDetails() {
                     <div className='chats mt-1 border-bottom'>
                       <span className='student-name'>TM</span>
                       <div className='text-secondary'>
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
+                      {studentSession.announcement}
                       </div>
                     </div>
                     <div className='chats mt-1'>

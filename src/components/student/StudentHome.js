@@ -68,14 +68,14 @@ function StudentHome() {
                           <tbody>
                             {Array.from(cohortSession).map((today) =>(
                                 <tr>
-                                <td class="pt-3-half" contenteditable="true">
+                                <td class="pt-3-half">
                                   {today.session_name}
                                 </td>
-                                <td class="pt-3-half" contenteditable="true">
+                                <td class="pt-3-half">
                                   {today.time}
                                 </td>
-                                <td class="pt-3-half" contenteditable="true">
-                                  {today.link}
+                                <td class="pt-3-half">
+                                  <a href={`${today.link}`}>{today.link}</a>
                                 </td>
 
                                 <td>
