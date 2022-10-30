@@ -1,26 +1,28 @@
-import React ,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import SideBar from "./SideBar";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function TMSchedule() {
-  const [modules, setModules] = useState("")
+  const [modules, setModules] = useState([]);
   const [schedule, setSchedule] = useState({
-      session_name: '',
-      cohort_id: '',
-      technical_mentor_id: '',
-      date: '',
-      time: '',
-      link: ''
+    session_name: "",
+    cohort_id: "",
+    technical_mentor_id: "",
+    date: "",
+    time: "",
+    link: "",
   });
 
-
-  const [cohortSession, setCohortSession] = useState("")
-
-  useEffect(() =>{
+  const [cohortSessions, setCohortSessions] = useState([]);
+  // fetch sessions data
+  useEffect(() => {
     fetch("/sessions")
-    .then(r => r.json())
-    .then(response => setCohortSession(response))
-  },[]);
+      .then((r) => r.json())
+      .then((response) => {
+        console.log(`cohort session`, response);
+        setCohortSessions(response);
+      });
+  }, []);
 
   function handleChange(event) {
     setSchedule({
@@ -38,7 +40,7 @@ function TMSchedule() {
       technical_mentor_id: 1,
       date: schedule.date,
       time: schedule.time,
-      link: schedule.link
+      link: schedule.link,
     };
 
     // console.log(formData)
@@ -47,18 +49,21 @@ function TMSchedule() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData ),
-    })
-    alert('sucess')
-      // .then((r) => r.json())
-      // .then((user) => onLogin(user));
+      body: JSON.stringify(formData),
+    });
+    alert("sucess");
+    // .then((r) => r.json())
+    // .then((user) => onLogin(user));
   }
-
-  useEffect(() =>{
+  // fetch cohorts data
+  useEffect(() => {
     fetch("/cohorts")
-    .then(r => r.json())
-    .then(response => setModules(response))
-  },[])
+      .then((r) => r.json())
+      .then((response) => {
+        console.log(`cohort`, response.cohort_id);
+        // setModules(response);
+      });
+  }, []);
 
   return (
     <div>
@@ -125,7 +130,7 @@ function TMSchedule() {
                         </label>
                         <input
                           type="text"
-                          name='session_name'
+                          name="session_name"
                           class="form-control"
                           id="session-name"
                           value={schedule.session_name}
@@ -139,7 +144,7 @@ function TMSchedule() {
                         <input
                           type="date"
                           class="form-control"
-                          name='date'
+                          name="date"
                           id="date"
                           value={schedule.date}
                           onChange={handleChange}
@@ -152,7 +157,7 @@ function TMSchedule() {
                         <input
                           type="time"
                           class="form-control"
-                          name='time'
+                          name="time"
                           id="time"
                           value={schedule.time}
                           onChange={handleChange}
@@ -162,13 +167,16 @@ function TMSchedule() {
                         <label for="message-text" class="col-form-label">
                           Module:
                         </label>
-                        <select class="form-control"
-                          name='cohort_id'
+                        <select
+                          class="form-control"
+                          name="cohort_id"
                           value={schedule.cohort_id}
                           onChange={handleChange}
                         >
                           {Array.from(modules).map((cohort) => (
-                            <option key={cohort.id} value={cohort.id}>{cohort.name}</option>
+                            <option key={cohort.id} value={cohort.id}>
+                              {cohort.name}
+                            </option>
                           ))}
                         </select>
                       </div>
@@ -180,7 +188,7 @@ function TMSchedule() {
                           type="text"
                           class="form-control"
                           id="link"
-                          name='link'
+                          name="link"
                           value={schedule.link}
                           onChange={handleChange}
                         ></input>
@@ -189,12 +197,13 @@ function TMSchedule() {
                         <label for="message-text" class="col-form-label">
                           Announcement:
                         </label>
-                        <textarea className="form-control" 
-                            type="text" 
-                            name='announcement'
+                        <textarea
+                          className="form-control"
+                          type="text"
+                          name="announcement"
                           // value={schedule.announcement}
-                          onChange={handleChange}>
-                        </textarea>
+                          onChange={handleChange}
+                        ></textarea>
                       </div>
                       <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">
@@ -211,7 +220,8 @@ function TMSchedule() {
           {/* add an accordion */}
           <div class="accordion" id="accordionExample">
             {/* first accordion */}
-            <div class="card z-depth-0 bordered">
+            {cohortSessions.map((session) => (
+              <div class="card z-depth-0 bordered">
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
                   <button
@@ -222,7 +232,7 @@ function TMSchedule() {
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    Friday 11th November 2022
+                    {session.date}
                   </button>
                 </h5>
               </div>
@@ -251,14 +261,10 @@ function TMSchedule() {
                             </tr>
                           </thead>
                           <tbody>
-                            {Array.from(cohortSession).map((today) =>(
-                                <tr>
-                                <td class="pt-3-half">
-                                  {today.session_name}
-                                </td>
-                                <td class="pt-3-half">
-                                  {today.time}
-                                </td>
+                            {Array.from(cohortSessions).map((today) => (
+                              <tr>
+                                <td class="pt-3-half">{today.session_name}</td>
+                                <td class="pt-3-half">{today.time}</td>
                                 <td class="pt-3-half">
                                   <a href={`${today.link}`}>{today.link}</a>
                                 </td>
@@ -269,13 +275,17 @@ function TMSchedule() {
                                       type="button"
                                       class="btn btn-dark btn-rounded btn-sm my-0"
                                     >
-                                      <Link to={`/tm-session-details/${today.id}`} className='button-links'>View</Link>
+                                      <Link
+                                        to={`/tm-session-details/${today.id}`}
+                                        className="button-links"
+                                      >
+                                        View
+                                      </Link>
                                     </button>
                                   </span>
                                 </td>
                               </tr>
                             ))}
-                            
                           </tbody>
                         </table>
                       </div>
@@ -285,86 +295,9 @@ function TMSchedule() {
                 </div>
               </div>
             </div>
-          </div>
-          {/* end of accordion */}
-
-          {/* add an accordion */}
-          <div class="accordion" id="accordionExample">
-            {/* first accordion */}
-            <div class="card z-depth-0 bordered">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  <button
-                    class="btn btn-link"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#collapseOne"
-                    aria-expanded="true"
-                    aria-controls="collapseOne"
-                  >
-                    Friday 11th November 2022
-                  </button>
-                </h5>
-              </div>
-              <div
-                id="collapseOne"
-                class="collapse show"
-                aria-labelledby="headingOne"
-                data-parent="#accordionExample"
-              >
-                <div class="card-body">
-                  {/* editable table */}
-                  <div class="card">
-                    <div class="card-body">
-                      <div id="table" class="table-editable">
-                        <span class="table-add float-right mb-3 mr-2">
-                          <a href="#!" class="text-success">
-                            <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
-                          </a>
-                        </span>
-                        <table class="table table-bordered table-responsive-md table-striped table-sm">
-                        <thead>
-                            <tr>
-                              <th class="text-center">Session Name</th>
-                              <th class="text-center">Time</th>
-                              <th class="text-center">Link</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {Array.from(cohortSession).map((today) =>(
-                                <tr>
-                                <td class="pt-3-half">
-                                  {today.session_name}
-                                </td>
-                                <td class="pt-3-half">
-                                  {today.time}
-                                </td>
-                                <td class="pt-3-half">
-                                  <a href={`${today.link}`}>{today.link}</a>
-                                </td>
-
-                                <td>
-                                  <span class="table-remove">
-                                    <button
-                                      type="button"
-                                      class="btn btn-dark btn-rounded btn-sm my-0"
-                                    >
-                                      <Link to={`/tm-session-details/${today.id}`} className='button-links'>View</Link>
-                                    </button>
-                                  </span>
-                                </td>
-                              </tr>
-                            ))}
-                            
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  {/* editable table */}
-                </div>
-              </div>
-            </div>
+            ))}
+            {/* end of first accordion */}
+            
           </div>
           {/* end of accordion */}
         </div>
