@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import SideBar from './SideBar'
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+
+// fetching student details
 
 function StudentSessionDetails() {
   const [studentSession, setStudentSession] = useState('')
@@ -11,11 +13,52 @@ function StudentSessionDetails() {
     .then(response => setStudentSession(response))
   },[]);
 
+
+  // fetching student comments
+  const [studentComments, setStudentComments] = useState('')
+  useEffect(() =>{
+    fetch(`/comments`)
+    .then(r => r.json())
+    .then(response => setStudentComments(response))
+  },[]);
+
   // const today_date = new Date()
   // console.log(today_date)
   // const display = cohortSession.filter((cohort) => {
   //   return cohort.date === parseInt(today_date)
   // });
+
+  const cohort_id = `${setStudentSession.cohort_id}`
+
+  const [students, setStudents] = useState("")
+  useEffect(() =>{
+    fetch(`/students`)
+    .then(r => r.json())
+    .then(response => setStudents(response))
+  },[]);
+
+  const session_students = Array.from(students).filter((student) => {
+    return student.cohort_id === parseInt(cohort_id)
+  });
+  // console.log(session_students)
+
+  const [comment, setComment] = useState("")
+
+  function handleCommentSubmit(e) {
+    e.preventDefault();
+    const commentData = {
+      student_id : 1,
+      session_id : 2,
+      description: comment
+    };
+    fetch("/comments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(commentData),
+    })
+  }
 
   return (
     <div>
@@ -57,7 +100,7 @@ function StudentSessionDetails() {
                       <span style={{fontWeight: 'bolder'}} className='summary-title'>Link:</span>
                     </div>
                     <div className='col-8'>
-                    <span className='summary-title'>{studentSession.link}</span>
+                    <span className='summary-title'><a href={`${studentSession.link}`}>{studentSession.link}</a></span>
                     </div>
                   </div>
               </div>
@@ -67,26 +110,14 @@ function StudentSessionDetails() {
                   <div className='student-summary'>
                   <table class="table table-striped table-hover table-sm ">
                     <tbody>
+                    {Array.from(students).map((student) =>(
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Student1</td>
-                        <td>student1@gmail.com</td>
+                        <th scope="row">{student.id}</th>
+                        <td>{student.name}</td>
+                        <td>{student.email}</td>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Student2</td>
-                        <td>student2@gmail.com</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Student3</td>
-                        <td>student3@gmail.com</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Student4</td>
-                        <td>student4@gmail.com</td>
-                      </tr>
+                      ))}
+                      
                     </tbody>
                   </table>
                 </div>
@@ -100,18 +131,18 @@ function StudentSessionDetails() {
                     <div className='chats mt-1 border-bottom'>
                       <span className='student-name'>TM</span>
                       <div className='text-secondary'>
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
+                      {studentSession.announcement}
                       </div>
                     </div>
+                    {Array.from(studentComments).map((comment) =>(
                     <div className='chats mt-1'>
-                      <span className='student-name'>Student 1</span>
+                      <span className='student-name'>{comment.student_id}</span>
                       <div>
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
+                        {comment.description}
                       </div>
                     </div>
-                    <div className='chats mt-1'>
+                    ))}
+                    {/* <div className='chats mt-1'>
                       <span className='student-name'>Student 5</span>
                       <div>
                         Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
@@ -124,11 +155,16 @@ function StudentSessionDetails() {
                         Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
                         Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
                       </div>
-                    </div>
+                    </div> */}
                     
                   </div>
-                  <form className='adding-comment mt-2'>
-                  <input className='h-100 px-4 student-comment-text' type='text' placeholder='Add comment.......' />
+                  <form className='adding-comment mt-2' onSubmit={handleCommentSubmit}>
+                  <input className='h-100 px-4 student-comment-text'
+                     type='text' 
+                     name='comment'
+                     value={comment}
+                     onChange={(e) => setComment(e.target.value)}
+                     placeholder='Add comment.......' />
                   <button type='submit' className='btn btn-secondary btn-sm mt-2 float-right'>Submit</button>
                   </form>
                 </div>

@@ -16,6 +16,40 @@ function TMModuleDetails() {
     .then(res => setModule(res))
   }, [module_id])
 
+
+
+  const cohort_id = `${module_id}`
+
+  const [students, setStudents] = useState("")
+  useEffect(() =>{
+    fetch(`/students`)
+    .then(r => r.json())
+    .then(response => setStudents(response))
+  },[]);
+
+  const [newmodule, setNewModule] = useState({
+      module_name: '',
+      description: ''
+  });
+
+  function handleModuleEdit(e){
+
+    e.preventDefault();
+
+    // const formData = {
+    //   session_name: schedule.session_name,
+    //   cohort_id: schedule.cohort_id,
+    //   technical_mentor_id: 1,
+    //   date: schedule.date,
+    //   time: schedule.time,
+    //   link: schedule.link
+    // };
+  }
+
+  const session_students = Array.from(students).filter((student) => {
+    return student.cohort_id === parseInt(cohort_id)
+  });
+
   const mainColor = {
     backgroundColor:'#535678'
   }
@@ -31,7 +65,7 @@ function TMModuleDetails() {
   
   return (
     <div>
-      <ModuleForm />
+      <ModuleForm name={module.name} description={module.description} handleEdit={handleModuleEdit}/>
       <NewStudent />
       <div className='row'>
           <div className='col-md-2 tm-main-sidebar'><SideBar /></div>
@@ -71,7 +105,15 @@ function TMModuleDetails() {
                     </tr>
                   </thead>
                   <tbody>
-                  {Array.from(module).map((cohort) => (
+                    {Array.from(students).map((student) =>(
+                      <tr>
+                        <th scope="row">{student.id}</th>
+                        <td>{student.name}</td>
+                        <td>{student.email}</td>
+                        <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
+                      </tr>
+                      ))}
+                  {/* {Array.from(module).map((cohort) => (
                     // console.log(cohort)
                     <tr>
                       <th scope="row">{cohort.students.id}</th>
@@ -79,121 +121,8 @@ function TMModuleDetails() {
                       <td>{cohort.students.email}</td>
                       <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
                     </tr>
-                  ))}
-                    {/* <tr>
-                      <th scope="row">2</th>
-                      <td>Student2</td>
-                      <td>student2@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Student3</td>
-                      <td>student3@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Student4</td>
-                      <td>student4@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Student5</td>
-                      <td>student5@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Student1</td>
-                      <td>student1@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Student2</td>
-                      <td>student2@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Student3</td>
-                      <td>student3@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Student4</td>
-                      <td>student4@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Student5</td>
-                      <td>student5@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Student1</td>
-                      <td>student1@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Student2</td>
-                      <td>student2@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Student3</td>
-                      <td>student3@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Student4</td>
-                      <td>student4@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Student5</td>
-                      <td>student5@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Student1</td>
-                      <td>student1@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Student2</td>
-                      <td>student2@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Student3</td>
-                      <td>student3@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Student4</td>
-                      <td>student4@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Student5</td>
-                      <td>student5@gmail.com</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr> */}
+                  ))} */}
+                    
                   </tbody>
                 </table>
               </div>

@@ -109,8 +109,7 @@ function TMSessionDetails() {
                     <div className='chats mt-1 border-bottom'>
                       <span className='student-name'>TM</span>
                       <div className='text-secondary'>
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
+                      {tmSession.announcement}
                       </div>
                     </div>
                     <div className='chats mt-1'>
