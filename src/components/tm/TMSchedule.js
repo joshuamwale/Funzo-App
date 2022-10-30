@@ -1,6 +1,7 @@
 import React ,{useState, useEffect} from "react";
 import SideBar from "./SideBar";
 import {Link} from 'react-router-dom'
+import moment from "moment";
 
 function TMSchedule() {
   const [modules, setModules] = useState("")
@@ -209,6 +210,7 @@ function TMSchedule() {
             {/* end of add schedule modal */}
           </div>
           {/* add an accordion */}
+          {Array.from(cohortSession).map((todaydate) =>(
           <div class="accordion" id="accordionExample">
             {/* first accordion */}
             <div class="card z-depth-0 bordered">
@@ -222,7 +224,7 @@ function TMSchedule() {
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    Friday 11th November 2022
+                    {todaydate.date}
                   </button>
                 </h5>
               </div>
@@ -257,7 +259,7 @@ function TMSchedule() {
                                   {today.session_name}
                                 </td>
                                 <td class="pt-3-half">
-                                  {today.time}
+                                  {moment(today.time}
                                 </td>
                                 <td class="pt-3-half">
                                   <a href={`${today.link}`}>{today.link}</a>
@@ -286,11 +288,11 @@ function TMSchedule() {
               </div>
             </div>
           </div>
+          ))}
           {/* end of accordion */}
 
           {/* add an accordion */}
-          <div class="accordion" id="accordionExample">
-            {/* first accordion */}
+          {/* <div class="accordion" id="accordionExample">
             <div class="card z-depth-0 bordered">
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
@@ -313,7 +315,6 @@ function TMSchedule() {
                 data-parent="#accordionExample"
               >
                 <div class="card-body">
-                  {/* editable table */}
                   <div class="card">
                     <div class="card-body">
                       <div id="table" class="table-editable">
@@ -361,11 +362,10 @@ function TMSchedule() {
                       </div>
                     </div>
                   </div>
-                  {/* editable table */}
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* end of accordion */}
         </div>
       </div>
