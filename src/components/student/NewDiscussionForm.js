@@ -14,7 +14,8 @@ function NewDiscussionForm({title, description, handleChange, handleSubmit}) {
                 <div class="mb-3 mt-5">
                     <label className="form-label">Title</label>
                     <input type="text" 
-                        className="form-control" 
+                        className="form-control"
+                        required 
                         name="title"
                         value={title}
                         onChange={handleChange}/>
@@ -23,6 +24,7 @@ function NewDiscussionForm({title, description, handleChange, handleSubmit}) {
                     <label className="form-label">Description</label>
                     <textarea className="form-control"
                         rows="3"
+                        require
                         name="description"
                         value={description}
                         onChange={handleChange}></textarea>

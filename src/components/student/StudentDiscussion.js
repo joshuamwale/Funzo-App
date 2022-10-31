@@ -70,7 +70,6 @@ function StudentDiscussion() {
                       <tr className='summary-button'>
                         <th scope="col"></th>
                         <th scope="col">Title</th>
-                        {/* <th scope="col">Initiater</th> */}
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
@@ -82,36 +81,6 @@ function StudentDiscussion() {
                         <td><button className='btn btn-sm summary-button'><Link to={`/student-join-discussion/${discussion.id}`} className='button-links'>Join</Link></button></td>
                       </tr>
                       ))}
-                      {/* <tr>
-                        <th scope="row">2</th>
-                        <td>Introduction to Ruby active record</td>
-                        <td>Mike Sigh</td>
-                        <td><button className='btn btn-sm summary-button'><Link to="/student-join-discussion/1" className='button-links'>Join</Link></button></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Form Validation in React</td>
-                        <td>Tonny Oseko</td>
-                        <td><button className='btn btn-sm summary-button'><Link to="/student-join-discussion/1" className='button-links'>Join</Link></button></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Writting clean code and code restructuriing</td>
-                        <td>Jane Doe</td>
-                        <td><button className='btn btn-sm summary-button'><Link to="/student-join-discussion/1" className='button-links'>Join</Link></button></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Error handling in ruby on rails</td>
-                        <td>Gideon Snitch</td>
-                        <td><button className='btn btn-sm summary-button'><Link to="/student-join-discussion/1" className='button-links'>Join</Link></button></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>Market reception on most popular languages</td>
-                        <td>Glenn Mwangi</td>
-                        <td><button className='btn btn-sm summary-button'><Link to="/student-join-discussion/1" className='button-links'>Join</Link></button></td>
-                      </tr> */}
                     </tbody>
                   </table>
                 </div>
