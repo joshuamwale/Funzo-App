@@ -5,13 +5,13 @@ import NewDiscussionForm from './NewDiscussionForm';
 
 function StudentDiscussion() {
 
-  // const [cohortSession, setCohortSession] = useState("")
+  const [discussion, setDiscussion] = useState([])
 
-  // useEffect(() =>{
-  //   fetch("/sessions")
-  //   .then(r => r.json())
-  //   .then(response => setCohortSession(response))
-  // },[]);
+  useEffect(() =>{
+    fetch("/discussions")
+    .then(r => r.json())
+    .then(response => setDiscussion(response))
+  },[]);
 
   // const today_date = new Date()
   // console.log(today_date)
@@ -19,12 +19,44 @@ function StudentDiscussion() {
   //   return cohort.date === parseInt(today_date)
   // });
 
+  const [newdiscussion, setNewDiscussion] = useState({
+    title: "",
+    discussion: ""
+  });
+
+  function handleChange(event) {
+    setNewDiscussion({
+      ...newdiscussion,
+      [event.target.name]: event.target.value,
+    });
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = {
+      title: newdiscussion.title,
+    description: newdiscussion.description
+    };
+
+    // console.log(formData)
+    fetch("/discussions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+  }
+
   function openFormData(){
     document.getElementById("form-data").style.display="block";
   }
   return (
     <div>
-      <NewDiscussionForm />
+      <NewDiscussionForm title={newdiscussion.text} 
+        description={newdiscussion.description}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}/>
       <div className='row'>
           <div className='col-md-2 main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
@@ -38,18 +70,19 @@ function StudentDiscussion() {
                       <tr className='summary-button'>
                         <th scope="col"></th>
                         <th scope="col">Title</th>
-                        <th scope="col">Initiater</th>
+                        {/* <th scope="col">Initiater</th> */}
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
+                    {Array.from(discussion).map((discussion) => (
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Undestanding react Hooks</td>
-                        <td>Tonny Oseko</td>
-                        <td><button className='btn btn-sm summary-button'><Link to="/student-join-discussion/1" className='button-links'>Join</Link></button></td>
+                        <th scope="row">{discussion.id}</th>
+                        <td>{discussion.title}</td>
+                        <td><button className='btn btn-sm summary-button'><Link to={`/student-join-discussion/${discussion.id}`} className='button-links'>Join</Link></button></td>
                       </tr>
-                      <tr>
+                      ))}
+                      {/* <tr>
                         <th scope="row">2</th>
                         <td>Introduction to Ruby active record</td>
                         <td>Mike Sigh</td>
@@ -78,7 +111,7 @@ function StudentDiscussion() {
                         <td>Market reception on most popular languages</td>
                         <td>Glenn Mwangi</td>
                         <td><button className='btn btn-sm summary-button'><Link to="/student-join-discussion/1" className='button-links'>Join</Link></button></td>
-                      </tr>
+                      </tr> */}
                     </tbody>
                   </table>
                 </div>
