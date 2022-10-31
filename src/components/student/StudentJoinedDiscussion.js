@@ -2,18 +2,23 @@ import React, {useEffect, useState} from 'react'
 import SideBar from './SideBar'
 import * as FiIcons from 'react-icons/fi';
 import NewDiscussionForm from './NewDiscussionForm';
+import { useParams } from 'react-router-dom';
 
 function StudentJoinedDiscussion() {
 
-  // useEffect(() =>{
-  //   fetch("/sessions")
-  //   .then(r => r.json())
-  //   .then(response => setCohortSession(response))
-  // },[]);
+  const [studentdiscussion, setStudentDiscussion] = useState([])
+
+  let {discussion_id} =  useParams()
+
+  useEffect(() =>{
+    fetch(`/discussions/${discussion_id}`)
+    .then(r => r.json())
+    .then(response => setStudentDiscussion(response))
+  },[]);
 
   // const today_date = new Date()
   // console.log(today_date)
-  // const display = cohortSession.filter((cohort) => {
+  // const display = cohortSession.filter((discussioncohort) => {
   //   return cohort.date === parseInt(today_date)
   // });
 
@@ -59,14 +64,12 @@ function StudentJoinedDiscussion() {
           <div className='col-md-2 main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
               <div className="summary-header mt-4 container">
-                  <span className='summary-title'>Discussion Title</span>
+                  <span className='summary-title'>{studentdiscussion.title}</span>
                   <button className='btn btn-sm summary-button button-right' onClick={openFormData}>Start Discussion</button>
               </div>
               <div className='discussion-comments mt-3 container'>
                 <span className='discussion-description'>
-                  Lorem Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                  Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                  Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
+                {studentdiscussion.description}
                 </span>
                 <div className='discussion-student-comments border-1 border-secondary  mt-3'>
                   <div className='chats mt-1'>

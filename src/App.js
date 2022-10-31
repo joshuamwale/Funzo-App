@@ -50,7 +50,7 @@ function App() {
 
             <Route
               exact
-              path="/student-join-discussion/:comment_id"
+              path="/student-join-discussion/:discussion_id"
               element={<StudentJoinedDiscussion />}
             ></Route>
 
