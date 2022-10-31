@@ -505,4 +505,9 @@
   padding: 30px;
   position: relative;
 }
+.accordion{
+  height: 70vh !important;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 

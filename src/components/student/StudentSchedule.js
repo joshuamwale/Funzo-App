@@ -4,13 +4,16 @@ import {Link} from 'react-router-dom'
 
 function StudentSchedule() {
 
-  const [cohortSession, setCohortSession] = useState("")
-
-  useEffect(() =>{
+  const [cohortSessions, setCohortSessions] = useState([]);
+  // fetch sessions data
+  useEffect(() => {
     fetch("/sessions")
-    .then(r => r.json())
-    .then(response => setCohortSession(response))
-  },[]);
+      .then((r) => r.json())
+      .then((response) => {
+        console.log(`cohort session`, response);
+        setCohortSessions(response);
+      });
+  }, []);
 
   const today_date = new Date()
   // console.log(today_date)
@@ -44,9 +47,10 @@ function StudentSchedule() {
             
           </div>
           {/* add an accordion */}
-          <div class="accordion" id="accordionExample">
+          <div className="accordion" id="accordion">
             {/* first accordion */}
-            <div class="card z-depth-0 bordered">
+            {cohortSessions.map((session) => (
+              <div class="card z-depth-0 bordered">
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
                   <button
@@ -57,7 +61,7 @@ function StudentSchedule() {
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    Friday 11th November 2022
+                    {session.date}
                   </button>
                 </h5>
               </div>
@@ -86,14 +90,10 @@ function StudentSchedule() {
                             </tr>
                           </thead>
                           <tbody>
-                            {Array.from(cohortSession).map((today) =>(
-                                <tr>
-                                <td class="pt-3-half">
-                                  {today.session_name}
-                                </td>
-                                <td class="pt-3-half">
-                                  {today.time}
-                                </td>
+                            {Array.from(cohortSessions).map((today) => (
+                              <tr>
+                                <td class="pt-3-half">{today.session_name}</td>
+                                <td class="pt-3-half">{today.time}</td>
                                 <td class="pt-3-half">
                                   <a href={`${today.link}`}>{today.link}</a>
                                 </td>
@@ -104,23 +104,30 @@ function StudentSchedule() {
                                       type="button"
                                       class="btn btn-dark btn-rounded btn-sm my-0"
                                     >
-                                      <Link to={`/student-session-details/${today.id}`} className='button-links'>View</Link>
+                                      <Link
+                                        to={`/student-session-details/${today.id}`}
+                                        className="button-links"
+                                      >
+                                        View
+                                      </Link>
                                     </button>
                                   </span>
                                 </td>
                               </tr>
                             ))}
-                            
                           </tbody>
                         </table>
                       </div>
                     </div>
                   </div>
-                  {/* editable table */}
                 </div>
               </div>
             </div>
+            ))}
+            {/* end of first accordion */}
+            
           </div>
+          {/* end of accordion */}
         </div>
       </div>
     </div>

@@ -218,7 +218,7 @@ function TMSchedule() {
             {/* end of add schedule modal */}
           </div>
           {/* add an accordion */}
-          <div class="accordion" id="accordionExample">
+          <div className="accordion" id="accordion">
             {/* first accordion */}
             {cohortSessions.map((session) => (
               <div class="card z-depth-0 bordered">
@@ -291,7 +291,6 @@ function TMSchedule() {
                       </div>
                     </div>
                   </div>
-                  {/* editable table */}
                 </div>
               </div>
             </div>

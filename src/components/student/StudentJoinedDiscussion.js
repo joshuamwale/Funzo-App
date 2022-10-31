@@ -17,12 +17,44 @@ function StudentJoinedDiscussion() {
   //   return cohort.date === parseInt(today_date)
   // });
 
+  const [newdiscussion, setNewDiscussion] = useState({
+    title: "",
+    discussion: ""
+  });
+
+  function handleChange(event) {
+    setNewDiscussion({
+      ...newdiscussion,
+      [event.target.name]: event.target.value,
+    });
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = {
+      title: newdiscussion.title,
+    description: newdiscussion.description
+    };
+
+    // console.log(formData)
+    fetch("/discussions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+  }
+
   function openFormData(){
     document.getElementById("form-data").style.display="block";
   }
   return (
     <div>
-      <NewDiscussionForm />
+      <NewDiscussionForm title={newdiscussion.text} 
+        description={newdiscussion.description}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}/>
       <div className='row'>
           <div className='col-md-2 main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
