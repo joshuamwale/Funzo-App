@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 
 function TMModuleDetails() {
 
+  // fetching module using parameters
   const [modules, setModules] = useState([])
   let {module_id} =  useParams()
   // console.log(module_id)
@@ -17,16 +18,6 @@ function TMModuleDetails() {
     .then(res => setModules(res))
   }, [module_id])
 
-
-
-  const cohort_id = `${module_id}`
-
-  const [students, setStudents] = useState([])
-  useEffect(() =>{
-    fetch(`/students`)
-    .then(r => r.json())
-    .then(response => setStudents(response))
-  },[]);
 
   const [newmodule, setNewModule] = useState({
       module_name: '',
