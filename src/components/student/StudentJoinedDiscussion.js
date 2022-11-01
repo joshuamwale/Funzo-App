@@ -22,6 +22,9 @@ function StudentJoinedDiscussion() {
   //   return cohort.date === parseInt(today_date)
   // });
 
+
+  // creating new topic of discussion
+
   const [newdiscussion, setNewDiscussion] = useState({
     title: "",
     discussion: ""
@@ -51,6 +54,38 @@ function StudentJoinedDiscussion() {
     });
   }
 
+  // adding comment to a discussion
+
+  const [comment, setComment] = useState("")
+
+  function handleCommentSubmit(e) {
+    e.preventDefault();
+    const commentData = {
+      discussion_id : 1,
+      student_id : 1,
+      comment: comment
+    };
+    // console.log(commentData)
+    fetch("/student_discussions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(commentData),
+    })
+  }
+
+  // fetching all the comments
+
+  const [studentcomment, setStudentComment] = useState([])
+
+  useEffect(() =>{
+    fetch(`/student_discussions`)
+    .then(r => r.json())
+    .then(response => setStudentComment(response))
+  },[]);
+
+
   function openFormData(){
     document.getElementById("form-data").style.display="block";
   }
@@ -72,55 +107,23 @@ function StudentJoinedDiscussion() {
                 {studentdiscussion.description}
                 </span>
                 <div className='discussion-student-comments border-1 border-secondary  mt-3'>
-                  <div className='chats mt-1'>
-                    <span className='student-name'>Student 1</span>
+                {studentcomment.map((comment, index) => (
+                  <div key={index} className='chats mt-1'>
+                    <span className='student-name'>{comment.student_id}</span>
                     <div>
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
+                      {comment.comment}
                     </div>
                   </div>
+                ))}
 
-                  <div className='chats mt-1'>
-                    <span className='student-name'>Student 2</span>
-                    <div>
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                    </div>
-                  </div>
-
-                  <div className='chats mt-1'>
-                    <span className='student-name'>Student 3</span>
-                    <div>
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                    </div>
-                  </div>
-
-                  <div className='chats mt-1'>
-                    <span className='student-name'>Student 4</span>
-                    <div>
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                    </div>
-                  </div>
-                  <div className='chats mt-1'>
-                    <span className='student-name'>Student 2</span>
-                    <div>
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                    </div>
-                  </div>
-
-                  <div className='chats mt-1'>
-                    <span className='student-name'>Student 5</span>
-                    <div>
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                    </div>
-                  </div>
                 </div>
-                <form className='new-comment border-1 border-secondary'>
-                  <input className='h-100 px-4 comment-text' type='text' placeholder='Add comment.......' />
+                <form className='new-comment border-1 border-secondary' onSubmit={handleCommentSubmit}>
+                  <input className='h-100 px-4 comment-text'
+                    type='text'
+                    name='comment'
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder='Add comment.......' />
                   <button className='btn send-button'><FiIcons.FiSend/></button>
                 </form>
               </div>

@@ -108,10 +108,10 @@ function StudentSessionDetails() {
                 <span className='summary-title'>List of Attendees</span>
                 <div className='attendees-list-summary mt-2'>
                   <div className='student-summary'>
-                  <table class="table table-striped table-hover table-sm ">
+                  <table className="table table-striped table-hover table-sm ">
                     <tbody>
-                    {Array.from(students).map((student) =>(
-                      <tr>
+                    {Array.from(students).map((student, index) =>(
+                      <tr key={index}>
                         <th scope="row">{student.id}</th>
                         <td>{student.name}</td>
                         <td>{student.email}</td>
@@ -134,33 +134,18 @@ function StudentSessionDetails() {
                       {studentSession.announcement}
                       </div>
                     </div>
-                    {Array.from(studentComments).map((comment) =>(
-                    <div className='chats mt-1'>
+                    {Array.from(studentComments).map((comment, index) =>(
+                    <div className='chats mt-1' key={index}>
                       <span className='student-name'>{comment.student_id}</span>
                       <div>
                         {comment.description}
                       </div>
                     </div>
-                    ))}
-                    {/* <div className='chats mt-1'>
-                      <span className='student-name'>Student 5</span>
-                      <div>
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      </div>
-                    </div>
-                    <div className='chats mt-1'>
-                      <span className='student-name'>Student 9</span>
-                      <div>
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      </div>
-                    </div> */}
-                    
+                    ))}                    
                   </div>
                   <form className='adding-comment mt-2' onSubmit={handleCommentSubmit}>
                   <input className='h-100 px-4 student-comment-text'
-                     type='text' 
+                     type='text'
                      name='comment'
                      value={comment}
                      onChange={(e) => setComment(e.target.value)}
