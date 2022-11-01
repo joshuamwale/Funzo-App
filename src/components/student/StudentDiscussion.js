@@ -74,8 +74,8 @@ function StudentDiscussion() {
                       </tr>
                     </thead>
                     <tbody>
-                    {Array.from(discussion).map((discussion) => (
-                      <tr>
+                    {Array.from(discussion).map((discussion, index) => (
+                      <tr key={index}>
                         <th scope="row">{discussion.id}</th>
                         <td>{discussion.title}</td>
                         <td><button className='btn btn-sm summary-button'><Link to={`/student-join-discussion/${discussion.id}`} className='button-links'>Join</Link></button></td>

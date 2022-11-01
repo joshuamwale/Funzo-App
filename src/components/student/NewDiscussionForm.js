@@ -11,7 +11,7 @@ function NewDiscussionForm({title, description, handleChange, handleSubmit}) {
             
             <div className='entry-data'>
                 <button className='btn btn-sm btn-outline-danger button-right' onClick={closeFormData}><AiIcons.AiOutlineClose /></button>
-                <div class="mb-3 mt-5">
+                <div className="mb-3 mt-5">
                     <label className="form-label">Title</label>
                     <input type="text" 
                         className="form-control"
@@ -29,7 +29,7 @@ function NewDiscussionForm({title, description, handleChange, handleSubmit}) {
                         value={description}
                         onChange={handleChange}></textarea>
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <button type="Submit" className="form-control btn-secondary">Submit</button>
             </div>
             </div>

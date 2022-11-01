@@ -42,6 +42,35 @@ function TMSessionDetails() {
     });
   }
 
+  // adding a comment
+  const [comment, setComment] = useState("")
+
+  function handleCommentSubmit(e) {
+    e.preventDefault();
+    const commentData = {
+      student_id : 1,
+      session_id : 2,
+      description: comment
+    };
+    fetch("/comments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(commentData),
+    })
+  }
+
+  // fetching student comments
+  const [studentComments, setStudentComments] = useState('')
+  useEffect(() =>{
+    fetch(`/comments`)
+    .then(r => r.json())
+    .then(response => setStudentComments(response))
+  },[]);
+
+
+
   return (
     <div>
       <div className='row'>
@@ -55,7 +84,7 @@ function TMSessionDetails() {
                 <div className="summary-header mt-2 container">
                 <form className=''>
                   <div className='entry-data'>
-                      <div class="mb-3 mt-1">
+                      <div className="mb-3 mt-1">
                           <label className="form-label">Session Name</label>
                           <input type="text"
                             className="form-control"
@@ -64,7 +93,7 @@ function TMSessionDetails() {
                             onChange={handleChange}
                              />
                       </div>
-                      <div class="mb-3 mt-3">
+                      <div className="mb-3 mt-3">
                           <label className="form-label">Date</label>
                           <input type="date" 
                             className="form-control"
@@ -73,7 +102,7 @@ function TMSessionDetails() {
                             onChange={handleChange}
                              />
                       </div>
-                      <div class="mb-3 mt-3">
+                      <div className="mb-3 mt-3">
                           <label className="form-label">Time</label>
                           <input type="time" 
                             className="form-control" 
@@ -82,7 +111,7 @@ function TMSessionDetails() {
                             onChange={handleChange}
                           />
                       </div>
-                      <div class="mb-3 mt-3">
+                      <div className="mb-3 mt-3">
                           <label className="form-label">Link</label>
                           <input type="text" 
                             className="form-control" 
@@ -91,9 +120,9 @@ function TMSessionDetails() {
                             onChange={handleChange}
                           />
                       </div>
-                      <div class="mb-3 mt-3 form-check">
+                      <div className="mb-3 mt-3 form-check">
                         <input type="checkbox" class="form-check-input"/>
-                        <label class="form-check-label">Resend Invite</label>
+                        <label className="form-check-label">Resend Invite</label>
                       </div>
                       <div class="mb-3">
                           <button type="Submit" className="form-control btn-success">Edit</button>
@@ -112,31 +141,23 @@ function TMSessionDetails() {
                       {tmSession.announcement}
                       </div>
                     </div>
-                    <div className='chats mt-1'>
-                      <span className='student-name'>Student 1</span>
+                    {Array.from(studentComments).map((comment, index) =>(
+                    <div className='chats mt-1' key={index}>
+                      <span className='student-name'>{comment.student_id}</span>
                       <div>
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
+                        {comment.description}
                       </div>
                     </div>
-                    <div className='chats mt-1'>
-                      <span className='student-name'>Student 5</span>
-                      <div>
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      </div>
-                    </div>
-                    <div className='chats mt-1'>
-                      <span className='student-name'>Student 9</span>
-                      <div>
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                        Ipsum dolor sit amet, consectetur adipiscing, sed eiusmod tempor incidunt
-                      </div>
-                    </div>
+                    ))}   
                     
                   </div>
-                  <form className='adding-comment mt-2'>
-                  <input className='h-100 px-4 student-comment-text' type='text' placeholder='Add comment.......' />
+                  <form className='adding-comment mt-2' onSubmit={handleCommentSubmit}>
+                  <input className='h-100 px-4 student-comment-text'
+                     type='text'
+                     name='comment'
+                     value={comment}
+                     onChange={(e) => setComment(e.target.value)}
+                     placeholder='Add comment.......' />
                   <button type='submit' className='btn btn-secondary btn-sm mt-2 float-right'>Submit</button>
                   </form>
                 </div>
