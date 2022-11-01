@@ -29,6 +29,7 @@ function StudentSessionDetails() {
       },
       body: JSON.stringify(commentData),
     })
+    setComment('');
   }
 
   return (
@@ -105,7 +106,7 @@ function StudentSessionDetails() {
                       </div>
                     </div>
                     {studentSession.comments && studentSession.comments.map((comment, index) =>(
-                    <div className='chats mt-1' key={index}>
+                    <div className='chats' key={index}>
                       <span className='student-name'>{comment.student_id}</span>
                       <div>
                         {comment.description}

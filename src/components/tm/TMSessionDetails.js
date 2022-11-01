@@ -59,6 +59,7 @@ function TMSessionDetails() {
       },
       body: JSON.stringify(commentData),
     })
+    setComment('');
   }
 
 
@@ -134,7 +135,7 @@ function TMSessionDetails() {
                       </div>
                     </div>
                     {tmSession.comments && tmSession.comments.map((comment, index) =>(
-                    <div className='chats mt-1' key={index}>
+                    <div className='chats' key={index}>
                       <span className='student-name'>{comment.student_id}</span>
                       <div>
                         {comment.description}
