@@ -16,13 +16,6 @@ function StudentJoinedDiscussion() {
     .then(response => setStudentDiscussion(response))
   },[]);
 
-  // const today_date = new Date()
-  // console.log(today_date)
-  // const display = cohortSession.filter((discussioncohort) => {
-  //   return cohort.date === parseInt(today_date)
-  // });
-
-
   // creating new topic of discussion
 
   const [newdiscussion, setNewDiscussion] = useState({
@@ -75,16 +68,6 @@ function StudentJoinedDiscussion() {
     })
   }
 
-  // fetching all the comments
-
-  const [studentcomment, setStudentComment] = useState([])
-
-  useEffect(() =>{
-    fetch(`/student_discussions`)
-    .then(r => r.json())
-    .then(response => setStudentComment(response))
-  },[]);
-
 
   function openFormData(){
     document.getElementById("form-data").style.display="block";
@@ -107,7 +90,7 @@ function StudentJoinedDiscussion() {
                 {studentdiscussion.description}
                 </span>
                 <div className='discussion-student-comments border-1 border-secondary  mt-3'>
-                {studentcomment.map((comment, index) => (
+                {studentdiscussion.student_discussions && studentdiscussion.student_discussions.map((comment, index) => (
                   <div key={index} className='chats mt-1'>
                     <span className='student-name'>{comment.student_id}</span>
                     <div>

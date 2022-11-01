@@ -60,8 +60,7 @@ function TMSchedule() {
     fetch("/cohorts")
       .then((r) => r.json())
       .then((response) => {
-        // console.log(`cohort`, response.cohort_id);
-        // setModules(response);
+        setModules(response);
       });
   }, []);
 

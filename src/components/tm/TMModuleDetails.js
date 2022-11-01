@@ -7,26 +7,17 @@ import { useParams } from 'react-router-dom';
 
 function TMModuleDetails() {
 
-  const [module, setModule] = useState('')
+  // fetching module using parameters
+  const [modules, setModules] = useState([])
   let {module_id} =  useParams()
   // console.log(module_id)
 
   useEffect(() => {
     fetch(`/cohorts/${module_id}`)
     .then(res => res.json())
-    .then(res => setModule(res))
+    .then(res => setModules(res))
   }, [module_id])
 
-
-
-  const cohort_id = `${module_id}`
-
-  const [students, setStudents] = useState("")
-  useEffect(() =>{
-    fetch(`/students`)
-    .then(r => r.json())
-    .then(response => setStudents(response))
-  },[]);
 
   const [newmodule, setNewModule] = useState({
       module_name: '',
@@ -47,9 +38,9 @@ function TMModuleDetails() {
     // };
   }
 
-  const session_students = Array.from(students).filter((student) => {
-    return student.cohort_id === parseInt(cohort_id)
-  });
+  // const session_students = Array.from(students).filter((student) => {
+  //   return student.cohort_id === parseInt(cohort_id)
+  // });
 
   const mainColor = {
     backgroundColor:'#535678'
@@ -66,7 +57,7 @@ function TMModuleDetails() {
   
   return (
     <div>
-      <ModuleForm name={module.name} description={module.description} handleEdit={handleModuleEdit}/>
+      <ModuleForm name={modules.name} description={modules.description} handleEdit={handleModuleEdit}/>
       <NewStudent />
       <div className='row'>
           <div className='col-md-2 tm-main-sidebar'><SideBar /></div>
@@ -77,7 +68,7 @@ function TMModuleDetails() {
                     <span style={{fontWeight: 'bolder'}} className='span-text'>Module Name:</span>
                   </div>
                   <div className='col-9'>
-                  <span className='span-text'>{module.name}</span>
+                  <span className='span-text'>{modules.name}</span>
                   </div>
                 </div>
                 <div className='row mt-2'>
@@ -85,7 +76,7 @@ function TMModuleDetails() {
                     <span style={{fontWeight: 'bolder'}} className='span-text'>Module Description:</span>
                   </div>
                   <div className='col-9'>
-                  <span className='span-text'>{module.description}</span>
+                  <span className='span-text'>{modules.description}</span>
                   </div>
                 </div>
                 <button className='btn btn-sm btn-outline-success button-right' onClick={openFormData}>edit module</button>
@@ -106,24 +97,14 @@ function TMModuleDetails() {
                     </tr>
                   </thead>
                   <tbody>
-                    {Array.from(students).map((student) =>(
-                      <tr>
+                    {modules.students && modules.students.map((student, index) =>(
+                      <tr key={index}>
                         <th scope="row">{student.id}</th>
                         <td>{student.name}</td>
                         <td>{student.email}</td>
                         <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
                       </tr>
                       ))}
-                  {/* {Array.from(module).map((cohort) => (
-                    // console.log(cohort)
-                    <tr>
-                      <th scope="row">{cohort.students.id}</th>
-                      <td>{cohort.students.name}</td>
-                      <td>{cohort.students.email}</td>
-                      <td><button className='btn btn-sm btn-outline-danger'>Remove</button></td>
-                    </tr>
-                  ))} */}
-                    
                   </tbody>
                 </table>
               </div>
