@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 function TMSessionDetails() {
 
-  const [tmSession, setTmSession] = useState('')
+  const [tmSession, setTmSession] = useState([])
 
   let {session_id} =  useParams()
   useEffect(() =>{
@@ -61,14 +61,6 @@ function TMSessionDetails() {
     })
   }
 
-  // fetching student comments
-  const [studentComments, setStudentComments] = useState('')
-  useEffect(() =>{
-    fetch(`/comments`)
-    .then(r => r.json())
-    .then(response => setStudentComments(response))
-  },[]);
-
 
 
   return (
@@ -79,7 +71,7 @@ function TMSessionDetails() {
           <div className='row mt-5'>
               <div className='col-6 border-right'>
                 <div className="summary-header mt-4">
-                  <span className='summary-title'>Module Name</span>
+                  <span className='summary-title'>{tmSession.session_name}</span>
                 </div>
                 <div className="summary-header mt-2 container">
                 <form className=''>
@@ -141,7 +133,7 @@ function TMSessionDetails() {
                       {tmSession.announcement}
                       </div>
                     </div>
-                    {Array.from(studentComments).map((comment, index) =>(
+                    {tmSession.comments && tmSession.comments.map((comment, index) =>(
                     <div className='chats mt-1' key={index}>
                       <span className='student-name'>{comment.student_id}</span>
                       <div>

@@ -5,7 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 // fetching student details
 
 function StudentSessionDetails() {
-  const [studentSession, setStudentSession] = useState('')
+  const [studentSession, setStudentSession] = useState([])
   let {session_id} =  useParams()
   useEffect(() =>{
     fetch(`/sessions/${session_id}`)
@@ -13,42 +13,13 @@ function StudentSessionDetails() {
     .then(response => setStudentSession(response))
   },[]);
 
-
-  // fetching student comments
-  const [studentComments, setStudentComments] = useState('')
-  useEffect(() =>{
-    fetch(`/comments`)
-    .then(r => r.json())
-    .then(response => setStudentComments(response))
-  },[]);
-
-  // const today_date = new Date()
-  // console.log(today_date)
-  // const display = cohortSession.filter((cohort) => {
-  //   return cohort.date === parseInt(today_date)
-  // });
-
-  const cohort_id = `${setStudentSession.cohort_id}`
-
-  const [students, setStudents] = useState("")
-  useEffect(() =>{
-    fetch(`/students`)
-    .then(r => r.json())
-    .then(response => setStudents(response))
-  },[]);
-
-  const session_students = Array.from(students).filter((student) => {
-    return student.cohort_id === parseInt(cohort_id)
-  });
-  // console.log(session_students)
-
   const [comment, setComment] = useState("")
 
   function handleCommentSubmit(e) {
     e.preventDefault();
     const commentData = {
       student_id : 1,
-      session_id : 2,
+      session_id : `${session_id}`,
       description: comment
     };
     fetch("/comments", {
@@ -110,9 +81,8 @@ function StudentSessionDetails() {
                   <div className='student-summary'>
                   <table className="table table-striped table-hover table-sm ">
                     <tbody>
-                    {Array.from(students).map((student, index) =>(
+                    {studentSession.students && studentSession.students.map((student, index) =>(
                       <tr key={index}>
-                        <th scope="row">{student.id}</th>
                         <td>{student.name}</td>
                         <td>{student.email}</td>
                       </tr>
@@ -134,7 +104,7 @@ function StudentSessionDetails() {
                       {studentSession.announcement}
                       </div>
                     </div>
-                    {Array.from(studentComments).map((comment, index) =>(
+                    {studentSession.comments && studentSession.comments.map((comment, index) =>(
                     <div className='chats mt-1' key={index}>
                       <span className='student-name'>{comment.student_id}</span>
                       <div>
