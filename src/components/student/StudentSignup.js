@@ -3,9 +3,8 @@ import React, { useState, useEffect } from "react";
 function StudentSignup() {
   const [errors, setErrors] = useState([]);
 
-  const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+  const [validations, setValidations] = useState({
+    name: "",
     email: "",
     phone: "",
     cohort_id: "",
@@ -16,8 +15,8 @@ function StudentSignup() {
 
   // on change handler
   const handleChange = (e) => {
-    setFormData({
-      ...formData, // spread operator
+    setValidations({
+      ...validations, // spread operator
       [e.target.name]: e.target.value,
     });
   };
@@ -25,8 +24,16 @@ function StudentSignup() {
   // on submit handler
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(formData);
-    fetch("http://localhost:3000/students", {
+    const formData = {
+      name: validations.name,
+      email: validations.email,
+      phone: validations.phone,
+      cohort_id: validations.cohort_id,
+      password: validations.password,
+      password_confirmation: validations.password_confirmation,
+    };
+
+    fetch("/student/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,12 +43,13 @@ function StudentSignup() {
       .then((r) => r.json())
       .then((data) => {
         if (data.error) {
+          console.log(data.error);
           setErrors(data.error);
           window.location.href = "/student-signup";
         } else {
           // redirect to login
           alert("You have successfully signed up!");
-          window.location.href = "/student";
+          window.location.href = "/student-login";
         }
       });
   };
@@ -58,7 +66,7 @@ function StudentSignup() {
 
   return (
     <div>
-      <form className="entry-form">
+      <form className="entry-form" onSubmit={handleSubmit}>
         <div className="entry-data">
           <span style={{ fontWeight: "bolder" }} className="summary-title">
             Signup
@@ -68,6 +76,7 @@ function StudentSignup() {
             <input
               type="text"
               name="name"
+              value={validations.name}
               className="form-control"
               onChange={handleChange}
             />
@@ -78,17 +87,37 @@ function StudentSignup() {
               type="text"
               className="form-control"
               name="email"
+              value={validations.email}
               onChange={handleChange}
             />
           </div>
           <div className="mb-3 mt-3">
             <label className="form-label">Phone</label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               name="phone"
+              value={validations.phone}
               onChange={handleChange}
             />
+          </div>
+          {/* cohort_id*/}
+          <div className="form-group">
+            <label htmlFor="message-text" className="col-form-label">
+              Module:
+            </label>
+            <select
+              className="form-control"
+              name="cohort_id"
+              value={validations.cohort_id}
+              onChange={handleChange}
+            >
+              {Array.from(studentscohort).map((cohort) => (
+                <option key={cohort.id} value={cohort.id}>
+                  {cohort.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="mb-3 mt-3">
@@ -97,6 +126,7 @@ function StudentSignup() {
               type="password"
               className="form-control"
               name="password"
+              value={validations.password}
               onChange={handleChange}
             />
           </div>
@@ -106,16 +136,13 @@ function StudentSignup() {
               type="password"
               className="form-control"
               name="password_confirmation"
+              value={validations.password_confirmation}
               onChange={handleChange}
             />
           </div>
           <div className="mb-3">
             <span className="text-danger">{errors}</span>I
-            <button
-              type="Submit"
-              className="form-control btn-secondary"
-              onClick={handleSubmit}
-            >
+            <button type="Submit" className="form-control btn-secondary">
               Submit
             </button>
             {/* have an account? signin */}

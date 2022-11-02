@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 
 function TMHome() {
   const [cohortSession, setCohortSession] = useState("")
+  const user=localStorage.getItem("user");
+  console.log(user)
 
   useEffect(() =>{
     fetch("/sessions")
