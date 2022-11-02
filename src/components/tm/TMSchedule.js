@@ -260,7 +260,9 @@ function TMSchedule() {
                             </tr>
                           </thead>
                           <tbody>
-                            {Array.from(cohortSessions).map((today, index) => (
+                            {cohortSessions.map((today, index) => {
+                              if(today.date === (`${session.date}`)){
+                              return(
                               <tr key={index}>
                                 <td className="pt-3-half">{today.session_name}</td>
                                 <td className="pt-3-half">{today.time}</td>
@@ -275,7 +277,7 @@ function TMSchedule() {
                                       className="btn btn-dark btn-rounded btn-sm my-0"
                                     >
                                       <Link
-                                        to={`/tm-session-details/${today.id}`}
+                                        to={`/student-session-details/${today.id}`}
                                         className="button-links"
                                       >
                                         View
@@ -284,7 +286,7 @@ function TMSchedule() {
                                   </span>
                                 </td>
                               </tr>
-                            ))}
+                            )}})}
                           </tbody>
                         </table>
                       </div>
