@@ -4,6 +4,19 @@ import * as AiIcons from "react-icons/ai";
 import * as GoIcons from "react-icons/go";
 
 function SideBar() {
+  // show username on login
+  const username = localStorage.getItem("username");
+  console.log(username);
+
+
+
+
+
+
+
+
+
+
   // logout function
   const handleLogout = () => {
     localStorage.clear();
