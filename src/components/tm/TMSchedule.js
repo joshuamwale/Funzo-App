@@ -11,6 +11,7 @@ function TMSchedule() {
     date: "",
     time: "",
     link: "",
+    announcement:""
   });
 
   const [cohortSessions, setCohortSessions] = useState([]);
@@ -41,6 +42,7 @@ function TMSchedule() {
       date: schedule.date,
       time: schedule.time,
       link: schedule.link,
+      announcement: schedule.announcement
     };
 
     // console.log(formData)
@@ -51,7 +53,8 @@ function TMSchedule() {
       },
       body: JSON.stringify(formData),
     });
-    alert("sucess");
+    setSchedule('')
+    alert("sucessfully added");
     // .then((r) => r.json())
     // .then((user) => onLogin(user));
   }
@@ -124,7 +127,7 @@ function TMSchedule() {
                   <div className="modal-body">
                     <form onSubmit={handleSubmit}>
                       <div className="form-group">
-                        <label for="recipient-name" className="col-form-label">
+                        <label className="col-form-label">
                           Session Name:
                         </label>
                         <input
@@ -200,7 +203,7 @@ function TMSchedule() {
                           className="form-control"
                           type="text"
                           name="announcement"
-                          // value={schedule.announcement}
+                          value={schedule.announcement}
                           onChange={handleChange}
                         ></textarea>
                       </div>
