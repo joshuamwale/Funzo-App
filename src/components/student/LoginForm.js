@@ -19,7 +19,7 @@ function LoginForm({ background }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(formData);
-    fetch("http://localhost:3000/login", {
+    fetch("/student/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

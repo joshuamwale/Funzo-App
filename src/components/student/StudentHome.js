@@ -11,8 +11,9 @@ function StudentHome() {
     .then(response => setCohortSession(response))
   },[]);
 
-  const today_date = new Date()
-  // console.log(today_date)
+  const today_date = new Date().toLocaleDateString()
+  
+  console.log(today_date)
   // const display = cohortSession.filter((cohort) => {
   //   return cohort.date === parseInt(today_date)
   // });
@@ -37,7 +38,7 @@ function StudentHome() {
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    {/* {today_date} */}
+                    {today_date}
                   </button>
                 </h5>
               </div>
