@@ -45,7 +45,7 @@ function TMSchedule() {
       announcement: schedule.announcement
     };
 
-    // console.log(formData)
+    console.log(formData)
     fetch("/sessions", {
       method: "POST",
       headers: {

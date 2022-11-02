@@ -1,31 +1,34 @@
-import React, {useEffect, useState} from 'react'
-import SideBar from './SideBar'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import SideBar from "./SideBar";
+import { Link } from "react-router-dom";
 
 function StudentHome() {
-  const [cohortSession, setCohortSession] = useState("")
+  const [cohortSession, setCohortSession] = useState("");
 
-  useEffect(() =>{
+  useEffect(() => {
     fetch("/sessions")
-    .then(r => r.json())
-    .then(response => setCohortSession(response))
-  },[]);
+      .then((r) => r.json())
+      .then((response) => {
+        console.log(response);
+        setCohortSession(response);
+      });
+  }, []);
 
-  const today_date = new Date().toLocaleDateString()
-  
-  console.log(today_date)
+  const today_date = new Date().toISOString().slice(0, 10);
+  // console.log(today_date)
   // const display = cohortSession.filter((cohort) => {
   //   return cohort.date === parseInt(today_date)
   // });
 
-
   return (
     <div>
-      <div className='row'>
-          <div className='col-md-2 main-sidebar'><SideBar /></div>
-          <div className='col-md-10'>
-                <h3>Student Home</h3>
-                <div className="accordion" id="accordionExample">
+      <div className="row">
+        <div className="col-md-2 main-sidebar">
+          <SideBar />
+        </div>
+        <div className="col-md-10">
+          <h3>Student Home</h3>
+          <div className="accordion" id="accordionExample">
             {/* first accordion */}
             <div className="card z-depth-0 bordered">
               <div className="card-header" id="headingOne">
@@ -55,7 +58,10 @@ function StudentHome() {
                       <div id="table" className="table-editable">
                         <span className="table-add float-right mb-3 mr-2">
                           <a href="#!" className="text-success">
-                            <i className="fas fa-plus fa-2x" aria-hidden="true"></i>
+                            <i
+                              className="fas fa-plus fa-2x"
+                              aria-hidden="true"
+                            ></i>
                           </a>
                         </span>
                         <table className="table table-bordered table-responsive-md table-striped table-sm">
@@ -64,22 +70,24 @@ function StudentHome() {
                               <th className="text-center">Session Name</th>
                               <th className="text-center">Time</th>
                               <th className="text-center">Link</th>
+                              <th className="text-center">Action</th>
                             </tr>
                           </thead>
                           <tbody>
-                            {Array.from(cohortSession).map((today, index) =>(
-                                <tr key={index}>
-                                <td className="pt-3-half">
-                                  {today.session_name}
-                                </td>
-                                <td className="pt-3-half">
-                                  {today.time}
-                                </td>
-                                <td className="pt-3-half">
-                                  <a href={`${today.link}`}>{today.link}</a>
-                                </td>
-
-                                <td>
+                            {Array.from(cohortSession).map((today, index) => {
+                              if (today.date === today_date) {
+                                return (
+                                  <tr key={index}>
+                                    <td className="pt-3-half">
+                                      {today.session_name}
+                                    </td>
+                                    <td className="pt-3-half">{today.time}</td>
+                                    <td className="pt-3-half">
+                                      <a href={today.link} target="_blank">
+                                        {today.link}
+                                      </a>
+                                    </td>
+                                    <td>
                                   <span className="table-remove">
                                     <button
                                       type="button"
@@ -89,9 +97,10 @@ function StudentHome() {
                                     </button>
                                   </span>
                                 </td>
-                              </tr>
-                            ))}
-                            
+                                  </tr>
+                                );
+                              }
+                            })}
                           </tbody>
                         </table>
                       </div>
@@ -102,10 +111,10 @@ function StudentHome() {
               </div>
             </div>
           </div>
-          </div>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default StudentHome
+export default StudentHome;

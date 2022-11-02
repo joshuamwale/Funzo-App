@@ -19,7 +19,7 @@ function LoginForm({ background }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(formData);
-    fetch("http://localhost:3000/technical_mentor/login", {
+    fetch("/technical_mentor/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +32,7 @@ function LoginForm({ background }) {
           setErrors(data.error);
           window.location.href = "/tm-login";
         } else {
-          // redirect to login
+          localStorage.setItem("user", formData.email);
           alert("You have successfully logged in!");
           window.location.href = "/tm";
         }
@@ -73,7 +73,7 @@ function LoginForm({ background }) {
               Login
             </button>
             <span className="mb-3">
-              <a href="/student-signup">Don't have an account? Sign up</a>
+              <a href="/tm-signup">Don't have an account? Sign up</a>
             </span>
           </div>
         </div>

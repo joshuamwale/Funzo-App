@@ -29,10 +29,12 @@ function LoginForm({ background }) {
       .then((r) => r.json())
       .then((data) => {
         if (data.error) {
+          console.log(data.error)
           setErrors(data.error);
           window.location.href = "/student-login";
         } else {
           // redirect to login
+          localStorage.setItem("user", formData.email);
           alert("You have successfully logged in!");
           window.location.href = "/student";
         }
@@ -41,7 +43,7 @@ function LoginForm({ background }) {
 
   return (
     <div>
-      <form style={background} className="auth-form">
+      <form style={background} className="auth-form" onSubmit={handleSubmit} >
         <div className="auth-data">
           <span style={{ fontWeight: "bolder" }} className="center">
             login
@@ -69,7 +71,7 @@ function LoginForm({ background }) {
             <button
               type="Submit"
               className="form-control btn-secondary"
-              onClick={handleSubmit}
+              
             >
               Login
             </button>

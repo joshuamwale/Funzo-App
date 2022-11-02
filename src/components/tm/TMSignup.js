@@ -35,9 +35,8 @@ function TMSignup() {
       alert(validation.errors);
       setErrors(validation.errors);
       window.location.href = "/tm-signup";
-
     } else alert("You have successfully signed up!");
-    window.location.href = "/tm";
+    window.location.href = "/tm-login";
   }
 
   function handleChange(event) {
@@ -47,7 +46,7 @@ function TMSignup() {
     });
   }
 
-  // 
+  //
 
   return (
     <div>
@@ -110,6 +109,10 @@ function TMSignup() {
             <button type="Submit" className="form-control btn-secondary">
               Signup
             </button>
+            {/* have an account? signin */}
+            <span className="mb-3">
+              <a href="/tm-login">Already have an account? Signin</a>
+            </span>
           </div>
         </div>
       </form>
