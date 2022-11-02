@@ -1,21 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Link, useParams } from "react-router-dom";
 import * as AiIcons from "react-icons/ai";
 import * as GoIcons from "react-icons/go";
 
 function SideBar() {
-  // show username on login
-  const username = localStorage.getItem("username");
-  console.log(username);
+  const user = localStorage.getItem("user");
 
-
-
-
-
-
-
-
-
+  // // fetch student data
+  // const [student, setStudent] = useState([]);
+  // useEffect(() => {
+  //   fetch("/students")
+  //     .then((r) => r.json())
+  //     .then((response) => {
+  //       response.map((student) => {
+  //         if (student.email === user) {
+  //           return (
+  //             setStudent(student)
+  //           )
+  //         }
+  //       }
+  //     });
+  // }, []);
 
   // logout function
   const handleLogout = () => {
@@ -32,7 +37,7 @@ function SideBar() {
           alt=""
           src="https://cdn2.iconfinder.com/data/icons/social-media-flat-line/70/user-512.png"
         />
-        <p className="user-name">User name</p>
+        <p className="user-name">{user}</p>
       </div>
 
       <div className="nav flex-column nav-pills">

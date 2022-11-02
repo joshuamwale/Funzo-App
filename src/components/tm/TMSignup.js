@@ -36,7 +36,7 @@ function TMSignup() {
       setErrors(validation.errors);
       window.location.href = "/tm-signup";
     } else alert("You have successfully signed up!");
-    window.location.href = "/tm";
+    window.location.href = "/tm-login";
   }
 
   function handleChange(event) {

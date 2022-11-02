@@ -1,76 +1,9 @@
 import SideBar from './SideBar'
-import React, { Component, seEffect, useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import './studentsettings.css'
 
-class StudentSettings extends Component {
-  constructor(props) {
-      super(props)
+function StudentSettings() {
 
-      this.state = {
-          Name: "",
-          email: "",
-          phone: "",
-          image: "",
-          password: ""
-
-      }
-      this.handleSubmit=this.handleSubmit.bind(this)
-  }
-
-  Namehandler = (event) => {
-      this.setState({
-          Name: event.target.value
-      })
-  }
-  emailhandler = (event) => {
-      this.setState({
-          email: event.target.value
-      })
-  }
-  phonehandler = (event) => {
-      this.setState({
-          phone: event.target.value
-      })
-  }
-  imagehandler = (event) => {
-      this.setState({
-          image: event.target.value
-      })
-  }
-  passwordhandler = (event) => {
-      this.setState({
-          password: event.target.value
-      })
-  }
-
-  // useEffect(() =>{
-  //   fetch("/sessions")
-  //   .then(r => r.json())
-  //   .then(response => setCohortSession(response))
-  // },[]);
-
-  // const today_date = new Date()
-  // console.log(today_date)
-  // const display = cohortSession.filter((cohort) => {
-  //   return cohort.date === parseInt(today_date)
-  // });
-
-  
-  handleSubmit = (event) => {
-      alert(`${this.state.name} ${this.state.email}  Update Successfull !!!!`)
-      console.log(this.state);
-      this.setState({
-          Name: "",
-          email: "",
-          phone: "",
-          image: "",
-          password: '',
-          
-      })
-   event.preventDefault()
-      
-  }
-  render() {
       return (
           <div>
             <div className="row">
@@ -93,6 +26,4 @@ class StudentSettings extends Component {
           </div>
       )
   }
-}
-
 export default StudentSettings
