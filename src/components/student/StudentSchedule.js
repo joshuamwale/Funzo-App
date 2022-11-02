@@ -90,7 +90,9 @@ function StudentSchedule() {
                             </tr>
                           </thead>
                           <tbody>
-                            {Array.from(cohortSessions).map((today, index) => (
+                            {cohortSessions.map((today, index) => {
+                              if(today.date === (`${session.date}`)){
+                              return(
                               <tr key={index}>
                                 <td className="pt-3-half">{today.session_name}</td>
                                 <td className="pt-3-half">{today.time}</td>
@@ -114,7 +116,7 @@ function StudentSchedule() {
                                   </span>
                                 </td>
                               </tr>
-                            ))}
+                            )}})}
                           </tbody>
                         </table>
                       </div>

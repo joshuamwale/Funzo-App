@@ -11,6 +11,7 @@ function TMSchedule() {
     date: "",
     time: "",
     link: "",
+    announcement:""
   });
 
   const [cohortSessions, setCohortSessions] = useState([]);
@@ -41,6 +42,7 @@ function TMSchedule() {
       date: schedule.date,
       time: schedule.time,
       link: schedule.link,
+      announcement: schedule.announcement
     };
 
     // console.log(formData)
@@ -51,7 +53,8 @@ function TMSchedule() {
       },
       body: JSON.stringify(formData),
     });
-    alert("sucess");
+    setSchedule('')
+    alert("sucessfully added");
     // .then((r) => r.json())
     // .then((user) => onLogin(user));
   }
@@ -124,7 +127,7 @@ function TMSchedule() {
                   <div className="modal-body">
                     <form onSubmit={handleSubmit}>
                       <div className="form-group">
-                        <label for="recipient-name" className="col-form-label">
+                        <label className="col-form-label">
                           Session Name:
                         </label>
                         <input
@@ -200,7 +203,7 @@ function TMSchedule() {
                           className="form-control"
                           type="text"
                           name="announcement"
-                          // value={schedule.announcement}
+                          value={schedule.announcement}
                           onChange={handleChange}
                         ></textarea>
                       </div>
@@ -260,7 +263,9 @@ function TMSchedule() {
                             </tr>
                           </thead>
                           <tbody>
-                            {Array.from(cohortSessions).map((today, index) => (
+                            {cohortSessions.map((today, index) => {
+                              if(today.date === (`${session.date}`)){
+                              return(
                               <tr key={index}>
                                 <td className="pt-3-half">{today.session_name}</td>
                                 <td className="pt-3-half">{today.time}</td>
@@ -275,7 +280,7 @@ function TMSchedule() {
                                       className="btn btn-dark btn-rounded btn-sm my-0"
                                     >
                                       <Link
-                                        to={`/tm-session-details/${today.id}`}
+                                        to={`/student-session-details/${today.id}`}
                                         className="button-links"
                                       >
                                         View
@@ -284,7 +289,7 @@ function TMSchedule() {
                                   </span>
                                 </td>
                               </tr>
-                            ))}
+                            )}})}
                           </tbody>
                         </table>
                       </div>
