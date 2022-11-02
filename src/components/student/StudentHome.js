@@ -37,7 +37,7 @@ function StudentHome() {
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    Friday 11th November 2022
+                    {/* {today_date} */}
                   </button>
                 </h5>
               </div>

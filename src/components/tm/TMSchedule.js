@@ -280,7 +280,7 @@ function TMSchedule() {
                                       className="btn btn-dark btn-rounded btn-sm my-0"
                                     >
                                       <Link
-                                        to={`/student-session-details/${today.id}`}
+                                        to={`/tm-session-details/${today.id}`}
                                         className="button-links"
                                       >
                                         View
