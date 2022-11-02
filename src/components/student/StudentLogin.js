@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import LoginForm from '../LoginForm'
+import LoginForm from './LoginForm'
 
 
 function StudentLogin() {
@@ -9,7 +9,7 @@ function StudentLogin() {
     }
   return (
     <div>
-      <LoginForm background={backColor}/>
+      <LoginForm background={backColor} />
     </div>
   )
 }

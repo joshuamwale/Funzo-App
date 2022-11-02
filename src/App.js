@@ -21,7 +21,7 @@ import TMSessionDetails from './components/tm/TMSessionDetails'
 import TMHome from './components/tm/TMHome'
 import TMLogin from "./components/tm/TMLogin";
 import TMSignup from "./components/tm/TMSignup";
-
+import LandingPage from "./components/LandingPage";
 
 
 function App() {
@@ -29,6 +29,8 @@ function App() {
     <div className="App">
       <Router>
           <Routes>
+            <Route exact path="/" element={<LandingPage />} />
+            {/* student routes */}
             <Route exact path="/student-login" element={<StudentLogin/>}></Route>
             <Route exact path="/student-signup" element={<StudentSignup/>}></Route>
             <Route exact path="/student" element={<StudentHome />}></Route>
@@ -59,6 +61,7 @@ function App() {
               element={<StudentJoinedDiscussion />}
             ></Route>
 
+            {/* TM routes */}
             <Route exact path="/tm" element={<TMHome />}></Route>
             <Route exact path="/tm-signup" element={<TMSignup />}></Route>
             <Route exact path="/tm-login" element={<TMLogin />}></Route>

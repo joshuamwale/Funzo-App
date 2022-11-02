@@ -35,8 +35,9 @@ function StudentSignup() {
     })
       .then((r) => r.json())
       .then((data) => {
-        if (data.errors) {
-          setErrors(data.errors);
+        if (data.error) {
+          setErrors(data.error);
+          window.location.href = "/student-signup";
         } else {
           // redirect to login
           alert("You have successfully signed up!");
@@ -89,25 +90,7 @@ function StudentSignup() {
               onChange={handleChange}
             />
           </div>
-          <div className="mb-3 mt-3">
-            <label className="form-label">Image</label>
-            <input
-              type="file"
-              className="form-control-file"
-              name="image"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3 mt-3">
-            <label className="form-label">Module</label>
-            <select className="form-control" name="cohort_id" onChange={handleChange} >
-              {studentscohort.map((cohort) => (
-                <option key={cohort.id} value={cohort.id}>
-                  {cohort.name}
-                </option>
-              ))}
-            </select>
-          </div>
+
           <div className="mb-3 mt-3">
             <label className="form-label">Password</label>
             <input
@@ -127,6 +110,7 @@ function StudentSignup() {
             />
           </div>
           <div className="mb-3">
+            <span className="text-danger">{errors}</span>I
             <button
               type="Submit"
               className="form-control btn-secondary"
@@ -134,6 +118,10 @@ function StudentSignup() {
             >
               Submit
             </button>
+            {/* have an account? signin */}
+            <span className="mb-3">
+              <a href="/student-login">Already have an account? Signin</a>
+            </span>
           </div>
         </div>
       </form>

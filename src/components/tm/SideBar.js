@@ -4,6 +4,12 @@ import * as MdIcons from 'react-icons/md';
 import * as AiIcons from 'react-icons/ai';
 
 function SideBar() {
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = "/tm-login";
+  };
+
   return (
     <div>
         <div className='profile'>
@@ -15,7 +21,7 @@ function SideBar() {
           <Link to="/tm" className='nav-link'> <AiIcons.AiOutlineHome /><span className='ml-2'>Home</span> </Link>
           <Link to="/tm-schedule" className='nav-link'><AiIcons.AiOutlineSchedule /> <span className='ml-2'>Schedule</span> </Link>
           <Link to="/tm-module" className='nav-link'><MdIcons.MdViewModule /> <span className='ml-2'>Module</span> </Link>
-          <Link to="#" className='nav-link'><AiIcons.AiOutlineLogout /> <span className='ml-2'>Logout</span> </Link>
+          <Link to="#" className='nav-link' onClick={handleLogout} ><AiIcons.AiOutlineLogout /> <span className='ml-2'>Logout</span> </Link>
         </div>
     </div>
   )
