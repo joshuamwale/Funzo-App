@@ -29,7 +29,7 @@ Funzo enables both the admin and student login accounts for accessibility of dif
 With **[GitHub action]** Funzo will post changes as tests with comment
 in pull request discussion to address bugs quicker and improve software quality.
     <p align="center">
-    <img src="./image.jpg" alt="Github Actions" width="738">
+    <img src=".public/image.jpg" alt="Github Actions" width="738">
     </p>
 
 ## Technologies
