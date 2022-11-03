@@ -13,7 +13,7 @@ function TMHome() {
     .then(response => setCohortSession(response))
   },[]);
 
-  const today_date = new Date()
+  const today_date = new Date().toISOString().slice(0, 10);
   // console.log(today_date)
   // const display = cohortSession.filter((cohort) => {
   //   return cohort.date === parseInt(today_date)
@@ -24,7 +24,7 @@ function TMHome() {
       <div className='row'>
           <div className='col-md-2 tm-main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
-                <h3>TM HomePage</h3>
+                <h3 className="mt-3">Todays Schedule</h3>
                 <div className="accordion" id="accordionExample">
             {/* first accordion */}
             <div className="card z-depth-0 bordered">
@@ -38,7 +38,7 @@ function TMHome() {
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    Friday 11th November 2022
+                    {today_date}
                   </button>
                 </h5>
               </div>
@@ -67,19 +67,20 @@ function TMHome() {
                             </tr>
                           </thead>
                           <tbody>
-                            {Array.from(cohortSession).map((today, index) =>(
-                                <tr key={index}>
-                                <td className="pt-3-half">
-                                  {today.session_name}
-                                </td>
-                                <td className="pt-3-half">
-                                  {today.time}
-                                </td>
-                                <td className="pt-3-half">
-                                  <a href={`${today.link}`}>{today.link}</a>
-                                </td>
-
-                                <td>
+                          {Array.from(cohortSession).map((today, index) => {
+                              if (today.date === today_date) {
+                                return (
+                                  <tr key={index}>
+                                    <td className="pt-3-half">
+                                      {today.session_name}
+                                    </td>
+                                    <td className="pt-3-half">{today.time}</td>
+                                    <td className="pt-3-half">
+                                      <a href={today.link} target="_blank">
+                                        {today.link}
+                                      </a>
+                                    </td>
+                                    <td>
                                   <span className="table-remove">
                                     <button
                                       type="button"
@@ -89,8 +90,10 @@ function TMHome() {
                                     </button>
                                   </span>
                                 </td>
-                              </tr>
-                            ))}
+                                  </tr>
+                                );
+                              }
+                            })}
                             
                           </tbody>
                         </table>

@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import SideBar from './SideBar'
-import ModuleForm from './ModuleForm'
-import NewStudent from './NewStudent'
 import { useParams } from 'react-router-dom';
+import * as AiIcons from 'react-icons/ai';
 
 
 function TMModuleDetails() {
@@ -21,21 +20,35 @@ function TMModuleDetails() {
 
   const [newmodule, setNewModule] = useState({
       module_name: '',
-      description: ''
+      module_description: ''
   });
+
+  // on change handler
+  const handleChange = (e) => {
+    setNewModule({
+      ...newmodule,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   function handleModuleEdit(e){
 
     e.preventDefault();
 
-    // const formData = {
-    //   session_name: schedule.session_name,
-    //   cohort_id: schedule.cohort_id,
-    //   technical_mentor_id: 1,
-    //   date: schedule.date,
-    //   time: schedule.time,
-    //   link: schedule.link
-    // };
+    const formData = {
+      module_name: newmodule.module_name,
+      module_description: newmodule.module_description
+    };
+
+    console.log(formData)
+    // fetch("/cohorts", {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // })
+
   }
 
   // const session_students = Array.from(students).filter((student) => {
@@ -49,16 +62,46 @@ function TMModuleDetails() {
   function openFormData(){
     document.getElementById("form-data").style.display="block";
   }
-  function openNewStudentForm(){
-    document.getElementById("student-form-data").style.display="block";
+
+  function closeFormData(){
+    document.getElementById("form-data").style.display="none";
   }
 
   // const student_modules = module.student_modules
   
   return (
     <div>
-      <ModuleForm name={modules.name} description={modules.description} handleEdit={handleModuleEdit}/>
-      <NewStudent />
+
+      {/* editing module form */}
+
+      <div className='form-data' id='form-data'>
+        <form className='entry-form' onSubmit={handleModuleEdit}>
+            
+            <div className='entry-data'>
+                <button className='btn btn-sm btn-outline-danger button-right' onClick={closeFormData}><AiIcons.AiOutlineClose /></button>
+                <div class="mb-3 mt-5">
+                    <label className="form-label">Module Name</label>
+                    <input type="text" 
+                        className="form-control" 
+                        name='module_name'
+                        value={modules.name}
+                        onChange={handleChange}
+                />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Module Description</label>
+                    <textarea className="form-control"
+                        name='module_description'
+                        value={modules.description}
+                        onChange={handleChange}
+                        rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <button type="Submit" className="form-control btn-secondary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
       <div className='row'>
           <div className='col-md-2 tm-main-sidebar'><SideBar /></div>
           <div className='col-md-10'>
@@ -84,7 +127,6 @@ function TMModuleDetails() {
             <div className='student-list container'>
               <div className="summary-header">
                 <span style={{fontWeight: 'bolder'}} className='span-text'>List of Students</span>
-                <button className='btn btn-sm summary-button button-right' onClick={openNewStudentForm}>Add Student</button>
               </div>
               <div className='student-summary mt-4'>
                 <table class="table table-striped table-hover table-sm ">
