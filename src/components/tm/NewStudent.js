@@ -10,7 +10,7 @@ function NewStudent() {
 
   const [studentscohort, setStudentsCohort] = useState([])
   useEffect(() => {
-    fetch("/cohorts")
+    fetch("https://enigmatic-woodland-61895.herokuapp.com/cohorts")
       .then((r) => r.json())
       .then((response) => {
         setStudentsCohort(response);
