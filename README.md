@@ -14,11 +14,11 @@ Funzo is a classroom platform that shows all classroom activities such as availa
 FUNZO
 
 ## Authors
-Glenn Mwangi - Scrum Master & Back-End Developer
-Tonny Oseko - Front-End Developer
-Mwenje David - Front-End Developer
-Maclaine Kuria - Front-End Developer
-Joshua Mwale - Back-End Developer
+* Glenn Mwangi - Scrum Master & Back-End Developer
+* Tonny Oseko - Front-End Developer
+* Mwenje David - Front-End Developer
+* Maclaine Kuria - Front-End Developer
+* Joshua Mwale - Back-End Developer
 
 ## General info/Project Description
 Funzo enables both the admin and student login accounts for accessibility of different details such as cohorts and  sessions.
