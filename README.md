@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+## FUNZO
+Funzo is a classroom platform that shows all classroom activities such as available cohorts, sessions in each cohorts, announcements, comments and gives the administration the ability to controls this aspects of the classes as well as allowing the student to have a general overview of the classes.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+* [Project Name](#Project)
+* [Authors](#Authors)
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [How it Works](#instructions)
+* [Contact information](#contacts)
 
-## Available Scripts
+## Project Name
+FUNZO
 
-In the project directory, you can run:
+## Authors
+Glenn Mwangi - Scrum Master & Back-End Developer
+Tonny Oseko - Front-End Developer
+Mwenje David - Front-End Developer
+Maclaine Kuria - Front-End Developer
+Joshua Mwale - Back-End Developer
 
-### `npm start`
+## General info/Project Description
+Funzo enables both the admin and student login accounts for accessibility of different details such as cohorts and  sessions.
+    <p align="center">
+    <img src="./img/example.png" alt="Size Limit CLI" width="738">
+    </p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+With **[GitHub action]** Funzo will post changes as tests with comment
+in pull request discussion to address bugs quicker and improve software quality.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Technologies
+Project is created with :
+* REACTJS 
+* GITHUB ACTIONS
+* CSS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup
+To run this program:
 
-### `npm run build`
+```
+$ Fork the repository from my git hub.
+$ Run the code from VS Code.
+$ Make changes where need be.
+```
+## How it works
+* Admin can add students into cohorts, make comments and edit sessions.
+* Students can view the sessions, cohorts and make comments
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contacts
+If you have any questions, comments or correctional advice, feel free to contact 
+[Glenn Mwangi](@glennkamau2@gmail.com)
