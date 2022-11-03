@@ -11,7 +11,7 @@ function StudentJoinedDiscussion() {
   let {discussion_id} =  useParams()
 
   useEffect(() =>{
-    fetch(`/discussions/${discussion_id}`)
+    fetch(`https://enigmatic-woodland-61895.herokuapp.com/discussions/${discussion_id}`)
     .then(r => r.json())
     .then(response => setStudentDiscussion(response))
   },[]);
@@ -38,7 +38,7 @@ function StudentJoinedDiscussion() {
     };
 
     // console.log(formData)
-    fetch("/discussions", {
+    fetch("https://enigmatic-woodland-61895.herokuapp.com/discussions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function StudentJoinedDiscussion() {
       comment: comment
     };
     // console.log(commentData)
-    fetch("/student_discussions", {
+    fetch("https://enigmatic-woodland-61895.herokuapp.com/student_discussions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

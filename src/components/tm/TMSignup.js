@@ -22,7 +22,7 @@ function TMSignup() {
 
     console.log(tmData);
 
-    fetch("/technical_mentor/signup", {
+    fetch("https://enigmatic-woodland-61895.herokuapp.com/technical_mentor/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

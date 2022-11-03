@@ -8,7 +8,7 @@ function StudentDiscussion() {
   const [discussion, setDiscussion] = useState([])
 
   useEffect(() =>{
-    fetch("/discussions")
+    fetch("https://enigmatic-woodland-61895.herokuapp.com/discussions")
     .then(r => r.json())
     .then(response => setDiscussion(response))
   },[]);
@@ -39,7 +39,7 @@ function StudentDiscussion() {
     };
 
     // console.log(formData)
-    fetch("/discussions", {
+    fetch("https://enigmatic-woodland-61895.herokuapp.com/discussions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

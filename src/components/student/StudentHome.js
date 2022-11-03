@@ -6,7 +6,7 @@ function StudentHome() {
   const [cohortSession, setCohortSession] = useState("");
 
   useEffect(() => {
-    fetch("/sessions")
+    fetch("https://enigmatic-woodland-61895.herokuapp.com/sessions")
       .then((r) => r.json())
       .then((response) => {
         console.log(response);
