@@ -27,7 +27,7 @@ function StudentHome() {
           <SideBar />
         </div>
         <div className="col-md-10">
-          <h3>Student Home</h3>
+          <h3 className="mt-3">Todays Schedule</h3>
           <div className="accordion" id="accordionExample">
             {/* first accordion */}
             <div className="card z-depth-0 bordered">
