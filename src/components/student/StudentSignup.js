@@ -94,7 +94,7 @@ function StudentSignup() {
           <div className="mb-3 mt-3">
             <label className="form-label">Phone</label>
             <input
-              type="number"
+              type="text"
               className="form-control"
               name="phone"
               value={validations.phone}

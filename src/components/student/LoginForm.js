@@ -48,7 +48,7 @@ function LoginForm({ background }) {
           <span style={{ fontWeight: "bolder" }} className="center">
             login
           </span>
-          <div class="mb-3 mt-3">
+          <div className="mb-3 mt-3">
             <label className="form-label">Email</label>
             <input
               type="text"
@@ -57,7 +57,7 @@ function LoginForm({ background }) {
               onChange={handleChange}
             />
           </div>
-          <div class="mb-3 mt-3">
+          <div className="mb-3 mt-3">
             <label className="form-label">Password</label>
             <input
               type="text"
@@ -66,7 +66,7 @@ function LoginForm({ background }) {
               onChange={handleChange}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <span className="text-danger">{errors}</span>
             <button
               type="Submit"
