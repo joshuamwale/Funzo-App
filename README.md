@@ -52,4 +52,8 @@ $ Make changes where need be.
 
 ## Contacts
 If you have any questions, comments or correctional advice, feel free to contact 
-[Glenn Mwangi](@glennkamau2@gmail.com)
+* [Glenn Mwangi](@glennkamau2@gmail.com)
+* [Tonny Oseko](@tonnyseko@gmail.com)
+* [Mwenje David](@mwenje.david@student.moringaschool.com)
+* [Maclaine Kuria](@maclainekuria@gmail.com)
+* [Joshua Mwale](@mwalejoshua89@gmail.com)
