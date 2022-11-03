@@ -23,12 +23,14 @@ FUNZO
 ## General info/Project Description
 Funzo enables both the admin and student login accounts for accessibility of different details such as cohorts and  sessions.
     <p align="center">
-    <img src="./img/example.png" alt="Size Limit CLI" width="738">
+    <img src="./img/example.png" alt="Funzo" width="738">
     </p>
 
 With **[GitHub action]** Funzo will post changes as tests with comment
 in pull request discussion to address bugs quicker and improve software quality.
-
+    <p align="center">
+    <img src="./img/example.png" alt="Github Actions" width="738">
+    </p>
 
 ## Technologies
 Project is created with :
