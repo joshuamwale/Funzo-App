@@ -8,7 +8,7 @@ function StudentSessionDetails() {
   const [studentSession, setStudentSession] = useState([])
   let {session_id} =  useParams()
   useEffect(() =>{
-    fetch(`https://enigmatic-woodland-61895.herokuapp.com/sessions/${session_id}`)
+    fetch(`http://127.0.0.1:3000/${session_id}`)
     .then(r => r.json())
     .then(response => setStudentSession(response))
   },[]);
@@ -22,7 +22,7 @@ function StudentSessionDetails() {
       session_id : `${session_id}`,
       description: comment
     };
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/comments", {
+    fetch("http://127.0.0.1:3000/comments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

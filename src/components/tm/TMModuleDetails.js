@@ -10,7 +10,7 @@ function TMModuleDetails() {
   // console.log(module_id)
 
   useEffect(() => {
-    fetch(`https://enigmatic-woodland-61895.herokuapp.com/cohorts/${module_id}`)
+    fetch(`http://127.0.0.1:3000/cohorts/${module_id}`)
       .then((res) => res.json())
       .then((res) => setModules(res));
   }, [module_id]);

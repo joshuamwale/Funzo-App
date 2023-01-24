@@ -33,7 +33,7 @@ function StudentSignup() {
       password_confirmation: validations.password_confirmation,
     };
 
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/student/signup", {
+    fetch("http://127.0.0.1:3000/student/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ function StudentSignup() {
   // fetch cohorts
   const [studentscohort, setStudentsCohort] = useState([]);
   useEffect(() => {
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/cohorts")
+    fetch("http://127.0.0.1:3000/cohorts")
       .then((r) => r.json())
       .then((response) => {
         setStudentsCohort(response);

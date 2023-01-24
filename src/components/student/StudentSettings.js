@@ -6,7 +6,7 @@ function StudentSettings() {
   const user = localStorage.getItem("user");
   const [studentuser, setStudentUser] = useState([]);
   useEffect(() => {
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/students")
+    fetch("http://127.0.0.1:3000/students")
       .then((r) => r.json())
       .then((response) => {
         console.log(response);
@@ -44,7 +44,7 @@ function StudentSettings() {
       password: studentdetails.password,
     };
     // console.log(formData)
-    fetch(`https://enigmatic-woodland-61895.herokuapp.com/student/${student_id}`, {
+    fetch(`http://127.0.0.1:3000/student/${student_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

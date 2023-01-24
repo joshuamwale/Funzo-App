@@ -8,7 +8,7 @@ function TMHome() {
   console.log(user)
 
   useEffect(() =>{
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/sessions")
+    fetch("http://127.0.0.1:3000/sessions")
     .then(r => r.json())
     .then(response => setCohortSession(response))
   },[]);

@@ -13,7 +13,7 @@ function TMModule() {
   }
 
   useEffect(() =>{
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/cohorts")
+    fetch("http://127.0.0.1:3000/cohorts")
     .then(r => r.json())
     .then(response => setModules(response))
   },[])

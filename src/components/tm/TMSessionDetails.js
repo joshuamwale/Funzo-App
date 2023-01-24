@@ -8,7 +8,7 @@ function TMSessionDetails() {
 
   let {session_id} =  useParams()
   useEffect(() =>{
-    fetch(`https://enigmatic-woodland-61895.herokuapp.com/sessions/${session_id}`)
+    fetch(`http://127.0.0.1:3000/sessions/${session_id}`)
     .then(r => r.json())
     .then(response => setTmSession(response))
   },[]);
@@ -52,7 +52,7 @@ function TMSessionDetails() {
       session_id : 2,
       description: comment
     };
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/comments", {
+    fetch("http://127.0.0.1:3000/comments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

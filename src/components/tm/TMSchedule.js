@@ -17,7 +17,7 @@ function TMSchedule() {
   const [cohortSessions, setCohortSessions] = useState([]);
   // fetch sessions data
   useEffect(() => {
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/sessions")
+    fetch("http://127.0.0.1:3000/sessions")
       .then((r) => r.json())
       .then((response) => {
         // console.log(`cohort session`, response);
@@ -46,7 +46,7 @@ function TMSchedule() {
     };
 
     console.log(formData)
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/sessions", {
+    fetch("http://127.0.0.1:3000/sessions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function TMSchedule() {
   }
   // fetch cohorts data
   useEffect(() => {
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/cohorts")
+    fetch("http://127.0.0.1:3000/cohorts")
       .then((r) => r.json())
       .then((response) => {
         setModules(response);

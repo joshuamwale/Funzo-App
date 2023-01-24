@@ -19,7 +19,7 @@ function LoginForm({ background }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(formData);
-    fetch("https://enigmatic-woodland-61895.herokuapp.com/student/login", {
+    fetch("http://127.0.0.1:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
